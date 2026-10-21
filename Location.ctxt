@@ -1,0 +1,25 @@
+#BlueJ class context
+#Wed Oct 21 11:51:30 CEST 2026
+comment0.target=Location
+comment0.text=\r\n Model a location in a two-dimensional grid city using (x, y) coordinates.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
+comment1.params=x y
+comment1.target=Location(int, int)
+comment1.text=\r\n Model a location in the city.\r\n @param x The x coordinate. Must be non-negative.\r\n @param y The y coordinate. Must be non-negative.\r\n @throws IllegalArgumentException If a coordinate is negative.\r\n
+comment2.params=destination
+comment2.target=Location nextLocation(Location)
+comment2.text=\r\n Generates the next location to visit in a direct line (Manhattan-style diagonal/straight move) \r\n from this location to the destination.\r\n @param destination The {@link Location} we want to get to.\r\n @return The next {@link Location} one step closer to the destination. Returns the destination\r\n if this location is already the destination.\r\n
+comment3.params=destination
+comment3.target=int distance(Location)
+comment3.text=\r\n Determines the number of movements required to get from here to the destination, \r\n using the Chebyshev distance (maximum of the absolute differences of the coordinates).\r\n @param destination The required destination {@link Location}.\r\n @return The number of movement steps.\r\n
+comment4.params=other
+comment4.target=boolean equals(java.lang.Object)
+comment4.text=\r\n Implement content equality for locations.\r\n @param other The object to compare with.\r\n @return {@code true} if the other object is a {@link Location} and has the same x and y coordinates, {@code false} otherwise.\r\n
+comment5.target=java.lang.String toString()
+comment5.text=\r\n @return A string representation of the location in the format "x-y".\r\n
+comment6.target=int hashCode()
+comment6.text=\r\n Generates a hash code for the location.\r\n It uses the top 16 bits for the y value and the bottom 16 bits for the x value\r\n to ensure a unique hash code for most grid sizes.\r\n @return A hashcode for the location.\r\n
+comment7.target=int getX()
+comment7.text=\r\n @return The x coordinate.\r\n
+comment8.target=int getY()
+comment8.text=\r\n @return The y coordinate.\r\n
+numComments=9

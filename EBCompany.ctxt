@@ -1,0 +1,24 @@
+#BlueJ class context
+#Wed Oct 21 12:45:19 CEST 2026
+comment0.target=EBCompany
+comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment1.params=name
+comment1.target=EBCompany(java.lang.String)
+comment1.text=\r\n Constructor for objects of class EVCompany.\r\n @param name The name of the company.\r\n
+comment2.params=bike
+comment2.target=void addElectricBike(ElectricBike)
+comment2.text=\r\n Adds an {@link ElectricBike} to the company's fleet.\r\n @param bike The electric bike to add.\r\n
+comment3.params=station
+comment3.target=void addBikeStation(BikeStation)
+comment3.text=\r\n Adds a {@link BikeStation} to the company's network.\r\n @param station The bike station to add.\r\n
+comment4.params=id
+comment4.target=BikeStation getBikeStation(java.lang.String)
+comment4.text=\r\n Retrieves a {@link BikeStation} by its unique ID.\r\n @param id The ID of the station to find.\r\n @return The {@link BikeStation} with the matching ID, or {@code null} if not found.\r\n
+comment5.params=location
+comment5.target=BikeStation getBikeStation(Location)
+comment5.text=\r\n Retrieves a {@link BikeStation} by its {@link Location}.\r\n @param location The {@link Location} of the station to find.\r\n @return The {@link BikeStation} at the matching location, or {@code null} if not found.\r\n
+comment6.target=int getNumberOfStations()
+comment6.text=\r\n @return The total number of managed {@link BikeStation}s.\r\n
+comment7.target=void reset()
+comment7.text=\r\n Clears all managed bikes and stations, resetting the company to an empty state.\r\n
+numComments=8

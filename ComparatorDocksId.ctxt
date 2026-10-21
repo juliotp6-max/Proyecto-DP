@@ -1,0 +1,8 @@
+#BlueJ class context
+#Wed Oct 21 13:00:48 CEST 2026
+comment0.target=ComparatorDocksId
+comment0.text=\r\n Compares two {@link Dock} objects based on their **ID** string in **ascending** order.\r\n This is typically used as a final tie-breaker in multi-criteria sorting.\r\n @author DP Clasess\r\n @version 2026.10.13\r\n
+comment1.params=c1 c2
+comment1.target=int compare(Dock, Dock)
+comment1.text=\r\n Compares its two {@link Dock} arguments for order.\r\n The comparison is based on the lexicographical order of their IDs.\r\n @param c1 The first dock to be compared.\r\n @param c2 The second dock to be compared.\r\n @return A negative integer, zero, or a positive integer as the first \r\n dock's ID is lexicographically less than, equal to, or greater than the second.\r\n
+numComments=2

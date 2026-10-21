@@ -1,0 +1,28 @@
+#BlueJ class context
+#Wed Oct 21 13:04:17 CEST 2026
+comment0.target=EBikeDemo
+comment0.text=\r\n Provides a simple demonstration and simulation environment for the \r\n Electric Bike (EB) and Bike Station model.\r\n It sets up the environment and runs the simulation for a fixed number of steps.\r\n\r\n Scenarios\: \r\n <ul>\r\n <li>Demo SIMPLE (demo\=DemoType.SIMPLE)\: Two bikes are created.</li>\r\n <li>Demo MEDIUM (demo\=DemoType.MEDIUM)\: Five bikes are created.</li>\r\n <li>Demo ADVANCED(demo\=DemoType.ADVANCED)\: Eight bikes are created.</li>\r\n </ul>\r\n * @author DP Clasess\r\n @version 2026\r\n
+comment1.target=EBikeDemo()
+comment1.text=\r\n Constructor for objects of class EBikeDemo.\r\n Initializes the company, bikes, and stations lists, and sets the number of \r\n bikes based on the {@code DEMO} constant before calling {@code reset()}.\r\n
+comment10.target=void showFinalInfo()
+comment10.text=\r\n Displays the final information after the simulation has run.\r\n bikes are sorted by arrival step using {@link ComparatorEBArrivingStep}.\r\n Stations are sorted by the number of recharges using {@link ComparatorBikeStationNumerRecharged}.\r\n
+comment11.target=void main()
+comment11.text=\r\n The main entry point for running the EBikeDemo simulation.\r\n Creates an instance of {@code EBikeDemo} and starts the simulation.\r\n
+comment2.target=void run()
+comment2.text=\r\n Run the demo for a fixed number of steps (50 steps).\r\n In each step, all bikes perform their action.\r\n
+comment3.params=step
+comment3.target=void step(int)
+comment3.text=\r\n Run the demo for one step by requesting all bikes to act.\r\n @param step The current step number of the simulation.\r\n
+comment4.target=void reset()
+comment4.text=\r\n Reset the demo to a starting point.\r\n Clears existing bikes and stations, resets the company, and re-creates\r\n the initial setup.\r\n
+comment5.target=void createElectricBikes()
+comment5.text=\r\n Creates the {@link ElectricBike}s based on {@code numBikesCreated}, assigns them\r\n starting and target {@link Location}s, and adds them to the company.\r\n The bikes list is sorted by plate using {@link ComparatorEBPlate}.\r\n
+comment6.target=void createStations()
+comment6.text=\r\n Creates predefined {@link BikeStation}s and adds them to the company.\r\n The stations list is sorted by ID using {@link ComparatorBikeStationId}.\r\n
+comment7.target=void createDocks()
+comment7.text=\r\n Creates a fixed number of {@link Dock} units for each {@link BikeStation}\r\n and orders the Docks within each station.\r\n
+comment8.target=void configureRoutes()
+comment8.text=\r\n Instructs each {@link ElectricBike} to calculate its initial route.\r\n This determines if an intermediate recharging stop is necessary.\r\n
+comment9.target=void showInitialInfo()
+comment9.text=\r\n Displays the initial information for the simulation, including \r\n the details of all {@link ElectricBike}s and {@link BikeStation}s.\r\n
+numComments=12
