@@ -11,7 +11,18 @@ import java.util.ArrayList;
 public class ElectricBike 
 {
     //TODO: Complete this code
-
+    // Atributos de la clase
+    private EBCompany company;
+    private Location location;
+    private Location targetLocation;
+    private Location rechargingLocation;
+    private String id;
+    private int batteryCapacity;
+    private int batteryLevel;
+    private int numberOfCharges;
+    private float chargesCost;
+    private int idleCount;
+    private List<Dock> docks;
     /**
      * Constructor of class ElectricBike.
      * @param company The EB's operating company. Must not be null.
@@ -24,6 +35,20 @@ public class ElectricBike
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
            //TODO: Complete this code
+        if (company == null || location == null || targetLocation == null) {
+            throw new NullPointerException("Company, location, and targetLocation must not be null.");
+        }
+        this.company = company;
+        this.location = location;
+        this.targetLocation = targetLocation;
+        this.id = id;
+        this.batteryCapacity = batteryCapacity;
+        batteryLevel = batteryCapacity;
+        this.rechargingLocation = null;
+        numberOfCharges = 0;
+        chargesCost = 0;
+        idleCount = 0;
+        docks = new ArrayList<>();
     }
 
     /**
@@ -32,7 +57,7 @@ public class ElectricBike
     public String getIdBike()
     {
          //TODO: Complete this code
-        return null;    
+        return id;    
     }
 
     /**
@@ -43,6 +68,10 @@ public class ElectricBike
     public void setLocation(Location location)
     {
         //TODO: Complete this code
+        if (location == null) {
+            throw new NullPointerException("Location must not be null.");
+        }
+        this.location = location;
     }
 
     /**
@@ -52,7 +81,7 @@ public class ElectricBike
     public Location getTargetLocation()
     {
         //TODO: Complete this code
-        return null;    
+        return targetLocation;  
     }
 
     /**
@@ -62,7 +91,7 @@ public class ElectricBike
     public Location getRechargingLocation()
     {
         //TODO: Complete this code
-        return null;
+        return rechargingLocation;
     }
 
 
@@ -74,6 +103,10 @@ public class ElectricBike
     public void setTargetLocation(Location location)
     {
         //TODO: Complete this code
+        if (location == null) {
+            throw new NullPointerException("Location must not be null.");
+        }
+        this.targetLocation = location;
     }
 
     /**
@@ -84,6 +117,7 @@ public class ElectricBike
     public void calculateRoute()
     {
         //TODO: Complete this code
+        
     }
 
     /**
@@ -93,7 +127,11 @@ public class ElectricBike
     public String getStringRoute()
     {
        //TODO: Complete this code
-       return null;
+       if (rechargingLocation != null) {
+           return location + " -> " + rechargingLocation + " -> " + targetLocation;
+       } else {
+           return location + " -> " + targetLocation;
+       }
     }
 
     /**
@@ -123,6 +161,9 @@ public class ElectricBike
     public int distanceToTheTargetLocation()
     {
         //TODO: Complete this code 
+        if (location != null && targetLocation != null) {
+            return location.distance(targetLocation);
+        }
         return 0;
     }
 
@@ -177,9 +218,10 @@ public class ElectricBike
      * @return A string containing the bike's name, plate, battery info, charge counts, costs, idle count, and route.
      */
     @Override
-    public String toString(){
-        //TODO: Complete this code 
-        return null;
+    public String toString() {
+    String cad = "(ElectricBike: " + getIdBike() + ", " + batteryLevel + "wh, ";
+        cad = cad + batteryCapacity + "wh, 0, 0.0, 0)";
+        return cad;
     }
 
    

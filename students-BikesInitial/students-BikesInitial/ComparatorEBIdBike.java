@@ -18,6 +18,6 @@ public class ComparatorEBIdBike implements Comparator<ElectricBike>
      */
     public int compare(ElectricBike eb1, ElectricBike eb2){  
         //TODO: Complete this code   
-        return 0;
+        return eb1.getIdBike().compareTo(eb2.getIdBike());
     } 
 }

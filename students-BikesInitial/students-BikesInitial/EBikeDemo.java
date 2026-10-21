@@ -49,7 +49,11 @@ public class EBikeDemo
     public EBikeDemo()
     {
         //TODO: Complete this code
-
+        company = new EBCompany("Compañía EBBike Cáceres");
+        bikes = new ArrayList<>();
+        stations = new ArrayList<>();
+        
+        reset();
     }
 
     /**
@@ -89,6 +93,7 @@ public class EBikeDemo
         createStations(); 
         createDocks();
         configureRoutes();
+        showInitialInfo();
         // TODO: Complete the code here: show the initial info
     }
 
@@ -108,9 +113,11 @@ public class EBikeDemo
         for (int i=0;i < DEMO.getNumBikesToCreate();i++){
             ElectricBike eb = new ElectricBike(company, locations[i],targetLocations[i],("EBCC"+i),(i+1)*15);
             // TODO: Complete the code here
+            bikes.add(eb);
+            
         }
         // TODO: Complete the code here
-
+        Collections.sort(bikes, new ComparatorEBIdBike());
     }
     
 
@@ -122,10 +129,13 @@ public class EBikeDemo
         Location [] locations = {new Location(10,5), new Location(10,11), new Location(14,16), new Location(8,4)};
                                 
         for (int i=0;i<DEMO.getNumStationsToCreate();i++){
-            company.addBikeStation(new BikeStation("CC0" + i,locations[i]));
+            BikeStation b = new BikeStation("CC0" + i,locations[i]);
+            company.addBikeStation(b);
+            stations.add(b);
         }
         
         // TODO: Complete the code here
+        
     }
 
     /**
@@ -164,13 +174,17 @@ public class EBikeDemo
         System.out.println("(-------------------)");
 
         // TODO: Complete the code here
-
+        for(ElectricBike bike : bikes){
+            System.out.println(bike);
+        }
         System.out.println("(-------------------)");
         System.out.println("( Bike Stations )");
         System.out.println("(-------------------)");
        
         // TODO: Complete the code here
-
+        for(BikeStation station : stations){
+            System.out.println(station);
+        }
         System.out.println("(------------------)");
         System.out.println("( Simulation start )");
         System.out.println("(------------------)");

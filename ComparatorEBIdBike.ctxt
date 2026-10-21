@@ -1,8 +1,0 @@
-#BlueJ class context
-#Wed Oct 21 12:55:13 CEST 2026
-comment0.target=ComparatorEBIdBike
-comment0.text=\r\n Compares two {@link ElectricBike} objects based on their id string in ascending order.\r\n This can be used for sorting lists of electric bikes.\r\n @author DP Clasess\r\n @version 2026.10.13\r\n
-comment1.params=eb1 eb2
-comment1.target=int compare(ElectricBike, ElectricBike)
-comment1.text=\r\n Compares its two {@link ElectricBike} arguments for order.\r\n The comparison is based on the lexicographical order of their ids.\r\n @param eb1 The first electric bike to be compared.\r\n @param eb2 The second electric bike to be compared.\r\n @return A negative integer, zero, or a positive integer as the first\r\n bike's plate is less than, equal to, or greater than the second.\r\n
-numComments=2

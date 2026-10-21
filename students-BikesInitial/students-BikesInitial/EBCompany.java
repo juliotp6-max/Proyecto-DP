@@ -10,7 +10,7 @@ import java.util.*;
 public class EBCompany  
 {
     //TODO: Complete this code
-
+    String name;
     /**
      * Constructor for objects of class EVCompany.
      * @param name The name of the company.
@@ -18,6 +18,7 @@ public class EBCompany
     public EBCompany(String name)
     {
         //TODO: Complete this code
+        this.name = name;
     }
 
     /**

@@ -1,0 +1,16 @@
+#BlueJ class context
+#Wed Oct 21 11:51:30 CEST 2026
+comment0.target=DemoType
+comment0.text=\r\n Enumeration that defines the types of pre-configured demonstration scenarios \r\n for the simulation. Each type specifies the number of bikes, stations, \r\n and docks to be created.\r\n * @author DP classes\r\n @version 2025.20.10\r\n
+comment1.params=name numBikesToCreate numStationsToCreate numDocksToCreate
+comment1.target=DemoType(java.lang.String, int, int, int)
+comment1.text=\r\n Constructor for the demo types.\r\n @param name Descriptive name.\r\n @param numBikesToCreate Number of bikes.\r\n @param numStationsToCreate Number of stations.\r\n @param numDocksToCreate Number of docks per station.\r\n
+comment2.target=java.lang.String getName()
+comment2.text=\r\n @return The descriptive name of the demo.\r\n
+comment3.target=int getNumBikesToCreate()
+comment3.text=\r\n @return The number of bikes that will be created for this scenario.\r\n
+comment4.target=int getNumStationsToCreate()
+comment4.text=\r\n @return The number of bike stations that will be created for this scenario.\r\n
+comment5.target=int getNumDocksToCreate()
+comment5.text=\r\n @return The number of docks that will be created in each station.\r\n
+numComments=6

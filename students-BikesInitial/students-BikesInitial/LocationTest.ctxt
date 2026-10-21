@@ -1,0 +1,17 @@
+#BlueJ class context
+#Wed Oct 21 13:00:52 CEST 2026
+comment0.target=LocationTest
+comment0.text=\r\n Test implementation of the {@link Location} class.\r\n Provides unit tests for methods like {@code distance()} and {@code nextLocation()}.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @version 2016.02.29\r\n @version 2026.10.13 DP classes (adaptado a Java 8+)\r\n
+comment1.target=LocationTest()
+comment1.text=\r\n Default constructor for test class LocationTest.\r\n
+comment2.target=void setUp()
+comment2.text=\r\n Sets up the test fixture.\r\n Called before every test case method.\r\n
+comment3.target=void tearDown()
+comment3.text=\r\n Tears down the test fixture.\r\n Called after every test case method.\r\n
+comment4.target=void testDistance()
+comment4.text=\r\n Test the {@code distance} method of the {@link Location} class.\r\n Checks distances from a central location to surrounding points.\r\n
+comment5.target=void testAdjacentLocations()
+comment5.text=\r\n Test the {@code nextLocation} method when the destination is adjacent \r\n (one step away in any direction).\r\n
+comment6.target=void testNonAdjacentLocations()
+comment6.text=\r\n Test the {@code nextLocation} method when the destination is not adjacent \r\n (more than one step away).\r\n
+numComments=7
