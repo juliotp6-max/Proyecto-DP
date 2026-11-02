@@ -4,13 +4,12 @@ import java.util.ArrayList;
 /**
  * Model the common elements of an Electric bike (EB) that operates 
  * within the simulation, moving towards a target and potentially recharging.
- * * @author David J. Barnes and Michael Kölling
+ * @author David J. Barnes and Michael Kölling
  * @author DP classes 
  * @version 2026.10.13
  */
 public class ElectricBike 
 {
-    //TODO: Complete this code
     // Atributos de la clase
     private EBCompany company;
     private Location location;
@@ -23,6 +22,8 @@ public class ElectricBike
     private float chargesCost;
     private int idleCount;
     private List<Dock> docks;
+    private double totalWhCharged; // Acumulador de wh cargados en total
+
     /**
      * Constructor of class ElectricBike.
      * @param company The EB's operating company. Must not be null.
@@ -34,7 +35,6 @@ public class ElectricBike
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
-           //TODO: Complete this code
         if (company == null || location == null || targetLocation == null) {
             throw new NullPointerException("Company, location, and targetLocation must not be null.");
         }
@@ -43,12 +43,13 @@ public class ElectricBike
         this.targetLocation = targetLocation;
         this.id = id;
         this.batteryCapacity = batteryCapacity;
-        batteryLevel = batteryCapacity;
+        this.batteryLevel = batteryCapacity;
         this.rechargingLocation = null;
-        numberOfCharges = 0;
-        chargesCost = 0;
-        idleCount = 0;
-        docks = new ArrayList<>();
+        this.numberOfCharges = 0;
+        this.chargesCost = 0.0f;
+        this.idleCount = 0;
+        this.docks = new ArrayList<>();
+        this.totalWhCharged = 0;
     }
 
     /**
@@ -56,7 +57,6 @@ public class ElectricBike
      */
     public String getIdBike()
     {
-         //TODO: Complete this code
         return id;    
     }
 
@@ -67,7 +67,6 @@ public class ElectricBike
      */
     public void setLocation(Location location)
     {
-        //TODO: Complete this code
         if (location == null) {
             throw new NullPointerException("Location must not be null.");
         }
@@ -80,7 +79,6 @@ public class ElectricBike
      */
     public Location getTargetLocation()
     {
-        //TODO: Complete this code
         return targetLocation;  
     }
 
@@ -90,10 +88,8 @@ public class ElectricBike
      */
     public Location getRechargingLocation()
     {
-        //TODO: Complete this code
         return rechargingLocation;
     }
-
 
     /**
      * Set the required final target location.
@@ -102,7 +98,6 @@ public class ElectricBike
      */
     public void setTargetLocation(Location location)
     {
-        //TODO: Complete this code
         if (location == null) {
             throw new NullPointerException("Location must not be null.");
         }
@@ -116,8 +111,11 @@ public class ElectricBike
      */
     public void calculateRoute()
     {
-        //TODO: Complete this code
-        
+        if (enoughBattery(targetLocation)) {
+            rechargingLocation = null;
+        } else {
+            calculateRechargingPosition();
+        }
     }
 
     /**
@@ -126,7 +124,6 @@ public class ElectricBike
      */
     public String getStringRoute()
     {
-       //TODO: Complete this code
        if (rechargingLocation != null) {
            return location + " -> " + rechargingLocation + " -> " + targetLocation;
        } else {
@@ -135,13 +132,18 @@ public class ElectricBike
     }
 
     /**
-     * Checks if the current battery level is sufficient to cover a given distance.
-     * //TODO complete the JavaDoc comments
+     * Checks if the current battery level is sufficient to cover a given distance to a location.
+     * @param dest The destination location to check.
+     * @return true if battery is enough, false otherwise.
      */
-    public boolean enoughBattery(   )
+    public boolean enoughBattery(Location dest)
     {
-        //TODO: Complete this code
-        return true;
+        if (location == null || dest == null) {
+            return false;
+        }
+        int distance = location.distance(dest);
+        int requiredEnergy = distance * 5; // 5 wh por cada paso
+        return batteryLevel >= requiredEnergy;
     }
 
     /**
@@ -151,7 +153,28 @@ public class ElectricBike
      */
     public void calculateRechargingPosition()
     {
-        //TODO: Complete this code
+        BikeStation bestStation = null;
+        int minTotalDistance = Integer.MAX_VALUE;
+
+        for (BikeStation station : company.getBikeStations()) {
+            // Comprobamos si tiene energía suficiente para llegar a la estación
+            if (enoughBattery(station.getLocation())) {
+                int distToStation = location.distance(station.getLocation());
+                int distStationToTarget = station.getLocation().distance(targetLocation);
+                int totalDist = distToStation + distStationToTarget;
+
+                if (totalDist < minTotalDistance) {
+                    minTotalDistance = totalDist;
+                    bestStation = station;
+                }
+            }
+        }
+
+        if (bestStation != null) {
+            rechargingLocation = bestStation.getLocation();
+        } else {
+            rechargingLocation = null; // Si ninguna estación es alcanzable
+        }
     }
 
     /**
@@ -160,7 +183,6 @@ public class ElectricBike
      */
     public int distanceToTheTargetLocation()
     {
-        //TODO: Complete this code 
         if (location != null && targetLocation != null) {
             return location.distance(targetLocation);
         }
@@ -170,47 +192,85 @@ public class ElectricBike
     /**
      * Simulates the recharging process when the bike arrives at a {@code rechargingLocation}.
      * The battery is charged to full capacity, the cost is calculated, and the route is recalculated.
-     * //TODO complete the JavaDoc comments
      */
-    public void recharge(   )
+    public void recharge()
     {
-        //TODO: Complete this code 
-    } 
+        // Buscamos la estación asociada a la ubicación de recarga actual
+        BikeStation station = company.getBikeStationAt(rechargingLocation);
+        if (station != null) {
+            Dock freeDock = station.getFreeDock();
+            if (freeDock != null) {
+                int whNeeded = batteryCapacity - batteryLevel;
+                if (whNeeded > 0) {
+                    float cost = freeDock.recharge(this, whNeeded);
+                    incrementCharges();
+                    incrementChargesCost(cost);
+                    totalWhCharged += whNeeded;
+                    batteryLevel = batteryCapacity;
+                }
+                if (!docks.contains(freeDock)) {
+                    docks.add(freeDock);
+                }
+            }
+        }
+        rechargingLocation = null;
+        calculateRoute();
+    }  
 
     /**
      * Increments the count of recharges performed by this bike.
-     * //TODO complete the JavaDoc comments
      */
     public void incrementCharges()
     {
-        //TODO: Complete this code 
+        numberOfCharges++;
     }
 
     /**
      * Adds a cost amount to the total charges cost.
-     * //TODO complete the JavaDoc comments
+     * @param cost The cost to add.
      */
-    public void incrementChargesCost(   )
+    public void incrementChargesCost(float cost)
     {
-        //TODO: Complete this code 
+        if (cost > 0) {
+            chargesCost += cost;
+        }
     }   
 
     /**
      * Carries out a single step of the bike's actions.
      * Moves one step towards the target (recharging or final) or stays idle.
-     * //TODO complete the JavaDoc comments
      */
-    public void act(   )
+    public void act()
     {
-       //TODO: Complete this code 
+        Location destination = (rechargingLocation != null) ? rechargingLocation : targetLocation;
+
+        if (location.equals(destination)) {
+            if (location.equals(targetLocation)) {
+                idleCount++;
+            } else if (location.equals(rechargingLocation)) {
+                recharge();
+            }
+        } else {
+            // CORREGIDO: Actualizamos la posición con setLocation usando nextLocation
+            setLocation(location.nextLocation(destination));
+            reduceBatteryLevel();
+
+            // Si al movernos hemos alcanzado la estación de recarga
+            if (location.equals(rechargingLocation)) {
+                recharge();
+            }
+        }
     }
 
     /**
-     * Reduces the battery level by the cost of one movement step (defined in {@link EBCompany#MOVINGCOST}).
+     * Reduces the battery level by the cost of one movement step (5 wh).
      * Ensures the battery level does not go below zero.
      */
     public void reduceBatteryLevel(){
-       //TODO: Complete this code 
+        batteryLevel -= 5;
+        if (batteryLevel < 0) {
+            batteryLevel = 0;
+        }
     }
 
     /**
@@ -219,10 +279,8 @@ public class ElectricBike
      */
     @Override
     public String toString() {
-    String cad = "(ElectricBike: " + getIdBike() + ", " + batteryLevel + "wh, ";
-        cad = cad + batteryCapacity + "wh, 0, 0.0, 0)";
+        String cad = "(ElectricBike: " + getIdBike() + ", " + batteryLevel + "wh, ";
+        cad = cad + batteryCapacity + "wh, " + numberOfCharges + ", " + chargesCost + ", " + idleCount + ")";
         return cad;
     }
-
-   
 }

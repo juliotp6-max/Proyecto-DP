@@ -3,22 +3,25 @@ import java.util.*;
 /**
  * Models the operation of an Electric Bike (EB) Company. 
  * It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.
- * * @author David J. Barnes and Michael Kölling
+ * @author David J. Barnes and Michael Kölling
  * @author DP classes
  * @version 2026.10.13
  */
 public class EBCompany  
 {
-    //TODO: Complete this code
-    String name;
+    private String name;
+    private List<ElectricBike> subscribedBikes;
+    private List<BikeStation> stations;
+
     /**
-     * Constructor for objects of class EVCompany.
+     * Constructor for objects of class EBCompany.
      * @param name The name of the company.
      */
     public EBCompany(String name)
     {
-        //TODO: Complete this code
         this.name = name;
+        this.subscribedBikes = new ArrayList<>();
+        this.stations = new ArrayList<>();
     }
 
     /**
@@ -27,19 +30,21 @@ public class EBCompany
      */
     public void addElectricBike(ElectricBike bike)
     {       
-        //TODO: Complete this code
+        if (bike != null && !subscribedBikes.contains(bike)) {
+            subscribedBikes.add(bike);
+        }
     }
 
-    
     /**
      * Adds a {@link BikeStation} to the company's network.
      * @param station The bike station to add.
      */
     public void addBikeStation(BikeStation station)
     {       
-        //TODO: Complete this code
+        if (station != null && !stations.contains(station)) {
+            stations.add(station);
+        }
     }
-    
     
     /**
      * Retrieves a {@link BikeStation} by its unique ID.
@@ -48,7 +53,11 @@ public class EBCompany
      */
     public BikeStation getBikeStation(String id)
     {
-        //TODO: Complete this code
+        for (BikeStation station : stations) {
+            if (station.getId().equals(id)) {
+                return station;
+            }
+        }
         return null;
     }
 
@@ -59,24 +68,45 @@ public class EBCompany
      */
     public BikeStation getBikeStation(Location location)
     {
-        //TODO: Complete this code
+        for (BikeStation station : stations) {
+            if (station.getLocation().equals(location)) {
+                return station;
+            }
+        }
         return null;
     }
-    
+
+    /**
+     * Retrieves a {@link BikeStation} at a given location (alias used by ElectricBike).
+     * @param location The location to check.
+     * @return The BikeStation at that location, or null if none.
+     */
+    public BikeStation getBikeStationAt(Location location)
+    {
+        return getBikeStation(location);
+    }
+
+    /**
+     * Returns the full list of bike stations managed by the company.
+     * @return List of bike stations.
+     */
+    public List<BikeStation> getBikeStations()
+    {
+        return stations;
+    }
     
     /**
      * @return The total number of managed {@link BikeStation}s.
      */
     public int getNumberOfStations(){
-        //TODO: Complete this code
-        return 0;
+        return stations.size();
     }
     
     /**
      * Clears all managed bikes and stations, resetting the company to an empty state.
      */
     public void reset(){
-        //TODO: Complete this code
+        subscribedBikes.clear();
+        stations.clear();
     }
-    
 }

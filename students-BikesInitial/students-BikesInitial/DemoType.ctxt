@@ -1,5 +1,5 @@
 #BlueJ class context
-#Wed Oct 21 11:51:30 CEST 2026
+#Mon Nov 02 19:49:01 CET 2026
 comment0.target=DemoType
 comment0.text=\r\n Enumeration that defines the types of pre-configured demonstration scenarios \r\n for the simulation. Each type specifies the number of bikes, stations, \r\n and docks to be created.\r\n * @author DP classes\r\n @version 2025.20.10\r\n
 comment1.params=name numBikesToCreate numStationsToCreate numDocksToCreate

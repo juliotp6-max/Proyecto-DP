@@ -40,8 +40,26 @@ public class Location
      */
     public Location nextLocation(Location destination)
     {
-         //TODO: Complete this code
-        return null;
+        if (destination == null) {
+            return this;
+        }
+        
+        int nextX = x;
+        int nextY = y;
+        
+        if(destination.getX() > x) {
+            nextX++;
+        } else if(destination.getX() < x) {
+            nextX--;
+        }
+        
+        if(destination.getY() > y) {
+            nextY++;
+        } else if(destination.getY() < y) {
+            nextY--;
+        }
+        
+        return new Location(nextX, nextY);
     }
 
     /**
@@ -52,8 +70,12 @@ public class Location
      */
     public int distance(Location destination)
     {
-         //TODO: Complete this code
-        return 0;
+        if (destination == null) {
+            return 0;
+        }
+        int deltaX = Math.abs(destination.getX() - x);
+        int deltaY = Math.abs(destination.getY() - y);
+        return Math.max(deltaX, deltaY);
     }
     
     /**
@@ -64,8 +86,11 @@ public class Location
     @Override
     public boolean equals(Object other)
     {
-         //TODO: Complete this code
-        return true;
+        if(other instanceof Location) {
+            Location otherLocation = (Location) other;
+            return x == otherLocation.getX() && y == otherLocation.getY();
+        }
+        return false;
     }
     
     /**

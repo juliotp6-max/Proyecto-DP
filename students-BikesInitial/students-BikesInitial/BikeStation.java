@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.Comparator;
 
 /**
  * Models an Electric Vehicle Charging Station.
@@ -11,34 +11,43 @@ import java.util.stream.Collectors;
  */
 public class BikeStation
 {
-    //TODO: Complete this code
+    private String idStation;
+    private Location location;
+    private List<Dock> docks;
 
     /**
-     * Constructor for objects of class BikeStation.
-     * //TODO complete the JavaDoc comments
+     * Constructor for objects of class BikeStation (default).
      */
-    public BikeStation(  )
+    public BikeStation()
     {
-        //TODO: Complete this code
+        this.idStation = "CC01";
+        this.location = new Location(0, 0);
+        this.docks = new ArrayList<>();
     }
 
     /**
      * Constructor for objects of class BikeStation.
-     * //TODO complete the JavaDoc comments
+     * @param id The unique identifier of the station.
+     * @param location The location of the station.
      */
     public BikeStation(String id, Location location)
     {
-        //TODO: Complete this code
+        this.idStation = id;
+        this.location = location;
+        this.docks = new ArrayList<>();
     }
     
     /**
      * Retrieves the first free {@link Dock} found at the station.
-     * @return A free {@link Dock}, or possibly throws an exception if none are found (depending on stream implementation details).
-     * **Note: The implementation assumes at least one free dock exists if called.**
+     * @return A free {@link Dock}, or null if none are found.
      */
     public Dock getFreeDock()
     {
-       //TODO: Complete this code   
+        for (Dock dock : docks) {
+            if (dock.isFree()) {
+                return dock;
+            }
+        }
         return null;        
     }
 
@@ -47,18 +56,65 @@ public class BikeStation
      */
     public String getId()
     {
-        //TODO: Complete this code   
-        return null;
+        return idStation;
     }
     
+    /**
+     * Método que devuelve la localización donde está la estación de bicicletas.
+     * @return La localización de la estación.
+     */
+    public Location getLocation()
+    {
+        return location;
+    }
+
+    /**
+     * Método que devuelve la colección docks.
+     * @return La lista de dársenas de la estación.
+     */
+    public List<Dock> getDocks()
+    {
+        return docks;
+    }
     
     /**
-     * Adds a new {@link Dock} to the station.
-     * @param dock The new Dock unit.
+     * Método que permite añadir un nuevo dock de tipo Dock a la colección docks,
+     * manteniendo el orden establecido (decreciente por velocidad, creciente por tarifa, creciente por ID).
+     * @param dock El nuevo Dock a añadir.
      */
     public void addDock(Dock dock)
     {
-       //TODO: Complete this code
+        if (dock != null && !docks.contains(dock)) {
+            docks.add(dock);
+            sortDocks();
+        }
+    }
+    
+    /**
+     * Ordena la colección de docks según los criterios de la Entrega Inicial:
+     * - Decreciente por velocidad de carga.
+     * - Creciente por tarifa de carga.
+     * - Creciente por identificador.
+     */
+    public void sortDocks()
+    {
+        Collections.sort(docks, new Comparator<Dock>() {
+            @Override
+            public int compare(Dock d1, Dock d2) {
+                // 1. Decreciente por velocidad de carga
+                int speedCmp = Integer.compare(d2.getChargingSpeed(), d1.getChargingSpeed());
+                if (speedCmp != 0) {
+                    return speedCmp;
+                }
+                // 2. Creciente por tarifa de carga
+                int feeCmp = Float.compare(d1.getChargingFee(), d2.getChargingFee());
+                if (feeCmp != 0) {
+                    return feeCmp;
+                }
+                // 3. Creciente por identificador
+                return d1.getId().compareTo(d2.getId());
+            }
+        });
     }
     
     /**
@@ -68,9 +124,18 @@ public class BikeStation
      */
     public void setLocation(Location location)
     {
-       //TODO: Complete this code   
+        if (location == null) {
+            throw new NullPointerException("Location must not be null.");
+        }
+        this.location = location;    
     }
 
-    //TODO complete the rest of the code
-
+    /**
+     * Returns a string representation of the bike station.
+     * @return A string containing station details.
+     */
+    @Override
+    public String toString() {
+        return "BikeStation [id=" + idStation + ", location=" + location + ", docks=" + docks.size() + "]";
+    }
 }

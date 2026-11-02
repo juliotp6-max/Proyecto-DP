@@ -16,8 +16,8 @@ public class ComparatorDocksId implements Comparator<Dock>
      * @return A negative integer, zero, or a positive integer as the first 
      * dock's ID is lexicographically less than, equal to, or greater than the second.
      */
-    public int compare(Dock c1, Dock c2){  
-        //TODO: Complete this code   
-        return 0;  
-    } 
+    public int compare(Dock c1, Dock c2){   
+        // Comparamos los IDs de los docks alfabéticamente
+        return c1.getId().compareTo(c2.getId());
+    }
 }
