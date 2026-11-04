@@ -1,5 +1,5 @@
 #BlueJ class context
-#Mon Nov 02 20:21:35 CET 2026
+#Wed Nov 04 15:22:10 CET 2026
 comment0.target=LocationTest
 comment0.text=\r\n Test implementation of the {@link Location} class.\r\n Provides unit tests for methods like {@code distance()} and {@code nextLocation()}.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @version 2016.02.29\r\n @version 2026.10.13 DP classes (adaptado a Java 8+)\r\n
 comment1.target=LocationTest()

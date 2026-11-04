@@ -1,12 +1,12 @@
 #BlueJ class context
-#Mon Nov 02 20:30:23 CET 2026
+#Tue Nov 03 17:11:20 CET 2026
 comment0.target=ElectricBike
 comment0.text=\r\n Model the common elements of an Electric bike (EB) that operates \r\n within the simulation, moving towards a target and potentially recharging.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.params=company location targetLocation id batteryCapacity
 comment1.target=ElectricBike(EBCompany, Location, Location, java.lang.String, int)
 comment1.text=\r\n Constructor of class ElectricBike.\r\n @param company The EB's operating company. Must not be null.\r\n @param location The EB's starting {@link Location}. Must not be null.\r\n @param targetLocation The EB's final destination {@link Location}. Must not be null.\r\n @param id The identificator of the bike.\r\n @param batteryCapacity The maximum capacity of the battery.\r\n @throws NullPointerException If company, location, or targetLocation is null.\r\n
 comment10.target=void calculateRechargingPosition()
-comment10.text=\r\n Determines the optimal intermediate {@link BikeStation} to visit for recharging\r\n if the bike cannot reach the final target directly.\r\n Sets {@code rechargingLocation} to the chosen station's location.\r\n
+comment10.text=\r\nMuestra la estacion de biciclitas ({@link BikeStation}) mas cercana a la\r\nque dirigirse para recargar cuando no dispone de suficiente bateria para \r\nllegar al destino fijado.\r\nRecorre todas las estaciones de la empresa a traves de un {@Link Iterator}\r\nlas distancias y la bateria que se dispone\r\n\r\n
 comment11.target=int distanceToTheTargetLocation()
 comment11.text=\r\n Get the Manhattan-like distance to the final target location from the current location.\r\n @return The distance to the target location.\r\n
 comment12.target=void recharge()

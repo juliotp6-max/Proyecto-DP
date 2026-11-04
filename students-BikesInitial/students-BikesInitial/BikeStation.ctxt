@@ -1,5 +1,5 @@
 #BlueJ class context
-#Mon Nov 02 20:30:23 CET 2026
+#Tue Nov 03 17:11:21 CET 2026
 comment0.target=BikeStation
 comment0.text=\r\n Models an Electric Vehicle Charging Station.\r\n A charging station contains multiple {@link Dock} units.\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.target=BikeStation()
@@ -13,7 +13,7 @@ comment2.params=id location
 comment2.target=BikeStation(java.lang.String, Location)
 comment2.text=\r\n Constructor for objects of class BikeStation.\r\n @param id The unique identifier of the station.\r\n @param location The location of the station.\r\n
 comment3.target=Dock getFreeDock()
-comment3.text=\r\n Retrieves the first free {@link Dock} found at the station.\r\n @return A free {@link Dock}, or null if none are found.\r\n
+comment3.text=Metodo con Iterator con Iterator que devuelve\r\n  un dock que este vacio o nulo si estan todos llenos.\r\n
 comment4.target=java.lang.String getId()
 comment4.text=\r\n @return The unique identifier of the charging station.\r\n
 comment5.target=Location getLocation()

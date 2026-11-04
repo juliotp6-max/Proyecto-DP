@@ -1,5 +1,5 @@
 #BlueJ class context
-#Mon Nov 02 20:30:23 CET 2026
+#Tue Nov 03 17:11:20 CET 2026
 comment0.target=EBCompany
 comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
 comment1.params=name

@@ -47,6 +47,7 @@ public class LocationTest
     public void testDistance()
     {
         //TODO: Complete this code
+        
     }
     
     /**

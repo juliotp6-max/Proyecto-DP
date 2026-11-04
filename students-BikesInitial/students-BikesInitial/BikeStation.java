@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Comparator;
-
+import java.util.Iterator;
 /**
  * Models an Electric Vehicle Charging Station.
  * A charging station contains multiple {@link Dock} units.
@@ -41,14 +41,20 @@ public class BikeStation
      * Retrieves the first free {@link Dock} found at the station.
      * @return A free {@link Dock}, or null if none are found.
      */
+    
+    /**Metodo con Iterator con Iterator que devuelve
+     *  un dock que este vacio o nulo si estan todos llenos.
+     */
     public Dock getFreeDock()
     {
-        for (Dock dock : docks) {
-            if (dock.isFree()) {
+        Iterator<Dock> it = docks.iterator();
+        while(it.hasNext()){
+            Dock dock = it.next();
+            if(dock.isFree()){
                 return dock;
             }
         }
-        return null;        
+        return null;
     }
 
     /**

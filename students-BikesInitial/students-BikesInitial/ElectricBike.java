@@ -1,6 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * Model the common elements of an Electric bike (EB) that operates 
  * within the simulation, moving towards a target and potentially recharging.
@@ -147,33 +147,37 @@ public class ElectricBike
     }
 
     /**
-     * Determines the optimal intermediate {@link BikeStation} to visit for recharging
-     * if the bike cannot reach the final target directly.
-     * Sets {@code rechargingLocation} to the chosen station's location.
+     *Muestra la estacion de biciclitas ({@link BikeStation}) mas cercana a la
+     *que dirigirse para recargar cuando no dispone de suficiente bateria para 
+     *llegar al destino fijado.
+     *Recorre todas las estaciones de la empresa a traves de un {@Link Iterator}
+     *las distancias y la bateria que se dispone
+     *
      */
     public void calculateRechargingPosition()
     {
         BikeStation bestStation = null;
         int minTotalDistance = Integer.MAX_VALUE;
 
-        for (BikeStation station : company.getBikeStations()) {
-            // Comprobamos si tiene energía suficiente para llegar a la estación
-            if (enoughBattery(station.getLocation())) {
+        Iterator<BikeStation> it= company.getBikeStations().iterator();
+
+        while(it.hasNext()){
+            BikeStation station= it.next();
+            
+            if(enoughBattery(station.getLocation())) {
                 int distToStation = location.distance(station.getLocation());
                 int distStationToTarget = station.getLocation().distance(targetLocation);
                 int totalDist = distToStation + distStationToTarget;
-
-                if (totalDist < minTotalDistance) {
-                    minTotalDistance = totalDist;
+                if(totalDist<minTotalDistance){
+                    minTotalDistance=totalDist;
                     bestStation = station;
                 }
             }
         }
-
-        if (bestStation != null) {
+        if(bestStation != null){
             rechargingLocation = bestStation.getLocation();
-        } else {
-            rechargingLocation = null; // Si ninguna estación es alcanzable
+        }else{
+            rechargingLocation = null;
         }
     }
 
