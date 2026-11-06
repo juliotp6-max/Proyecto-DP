@@ -110,6 +110,14 @@ public class ElectricBike
     }
 
     /**
+     * @return The current location of the electric bike.
+     */
+    public Location getLocation()
+    {
+        return location;
+    }
+    
+    /**
      * Calculates the optimal route for the bike. 
      * If there isn't enough battery to reach the target, it attempts to find an intermediate 
      * {@link BikeStation} and sets it as the {@code rechargingLocation}.

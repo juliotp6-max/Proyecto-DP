@@ -66,7 +66,6 @@ public class EBCompany
         return currentTurn;
     }
     
-    
     //Simula que avanza un turno.
     public void step(){
         currentTurn++;
@@ -74,14 +73,17 @@ public class EBCompany
             bike.act();
         }
     }
+    
     /**
-     * Retrieves a {@link BikeStation} by its {@link Location}.
+     * Retrieves a {@link BikeStation} by its {@link Location} using an Iterator.
      * @param location The {@link Location} of the station to find.
      * @return The {@link BikeStation} at the matching location, or {@code null} if not found.
      */
     public BikeStation getBikeStation(Location location)
     {
-        for (BikeStation station : stations) {
+        Iterator<BikeStation> it = stations.iterator();
+        while (it.hasNext()) {
+            BikeStation station = it.next();
             if (station.getLocation().equals(location)) {
                 return station;
             }
@@ -106,6 +108,13 @@ public class EBCompany
     public List<BikeStation> getBikeStations()
     {
         return stations;
+    }
+    
+    /**
+     * Ordena las bicicletas suscritas de forma creciente por su ID.
+     */
+    public void sortBikesById() {
+        subscribedBikes.sort((b1, b2) -> b1.getIdBike().compareTo(b2.getIdBike()));
     }
     
     /**

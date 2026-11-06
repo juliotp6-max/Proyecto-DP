@@ -44,10 +44,13 @@ public class LocationTest
      * Checks distances from a central location to surrounding points.
      */
     @Test
-    public void testDistance()
-    {
-        //TODO: Complete this code
-        
+    public void testDistance() {
+        Location loc1 = new Location(0, 0);
+        Location loc2 = new Location(1, 5);
+        assertEquals(5, loc1.distance(loc2));
+        Location p2 = new Location(6, 6);
+        Location p3 = new Location(5, 2);
+        assertEquals(4, p2.distance(p3));
     }
     
     /**
@@ -55,9 +58,11 @@ public class LocationTest
      * (one step away in any direction).
      */
     @Test
-    public void testAdjacentLocations()
-    {
-        //TODO: Complete this code
+    public void testAdjacentLocations() {
+        Location current = new Location(3, 3);
+        Location target = new Location(4, 4);
+        Location next = current.nextLocation(target);
+        assertEquals(new Location(4, 4), next);
     }
     
     /**
@@ -65,8 +70,10 @@ public class LocationTest
      * (more than one step away).
      */
     @Test
-    public void testNonAdjacentLocations()
-    {
-        //TODO: Complete this code
+    public void testNonAdjacentLocations() {
+        Location loc1 = new Location(0, 0);
+        Location loc2 = new Location(1, 5);
+        Location next = loc1.nextLocation(loc2);
+        assertEquals(new Location(1, 1), next);
     }
 }
