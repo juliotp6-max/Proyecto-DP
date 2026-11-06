@@ -1,0 +1,7 @@
+#BlueJ class context
+#Thu Nov 05 18:13:21 CET 2026
+comment0.target=ComparatorEBTurn
+comment0.text=\r\n Write a description of class ComparatorEBTurn here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=e1 e2
+comment1.target=int compare(ElectricBike, ElectricBike)
+numComments=2

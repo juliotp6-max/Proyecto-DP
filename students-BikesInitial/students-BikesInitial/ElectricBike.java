@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Comparator;
 /**
  * Model the common elements of an Electric bike (EB) that operates 
  * within the simulation, moving towards a target and potentially recharging.
@@ -23,7 +24,10 @@ public class ElectricBike
     private int idleCount;
     private List<Dock> docks;
     private double totalWhCharged; // Acumulador de wh cargados en total
+    private int turn; //Variable que se utiliza para comprobar el turno de llegada entre dos EBike que van a un mismo destino.
 
+    public static final Comparator<ElectricBike> COMPARADOR_EBIKE = Comparator.comparing(ElectricBike::getIdBike);
+    
     /**
      * Constructor of class ElectricBike.
      * @param company The EB's operating company. Must not be null.
@@ -50,6 +54,7 @@ public class ElectricBike
         this.idleCount = 0;
         this.docks = new ArrayList<>();
         this.totalWhCharged = 0;
+        this.turn = Integer.MAX_VALUE;
     }
 
     /**
@@ -131,6 +136,9 @@ public class ElectricBike
        }
     }
 
+    public int getTurn(){
+        return turn;
+    }
     /**
      * Checks if the current battery level is sufficient to cover a given distance to a location.
      * @param dest The destination location to check.
@@ -250,6 +258,10 @@ public class ElectricBike
 
         if (location.equals(destination)) {
             if (location.equals(targetLocation)) {
+                
+                if(turn == Integer.MAX_VALUE){
+                    turn = company.getCurrentTurn();
+                }
                 idleCount++;
             } else if (location.equals(rechargingLocation)) {
                 recharge();
@@ -287,4 +299,6 @@ public class ElectricBike
         cad = cad + batteryCapacity + "wh, " + numberOfCharges + ", " + chargesCost + ", " + idleCount + ")";
         return cad;
     }
+    
+    
 }

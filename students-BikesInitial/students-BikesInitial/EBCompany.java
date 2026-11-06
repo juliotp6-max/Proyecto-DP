@@ -12,7 +12,7 @@ public class EBCompany
     private String name;
     private List<ElectricBike> subscribedBikes;
     private List<BikeStation> stations;
-
+    private int currentTurn;
     /**
      * Constructor for objects of class EBCompany.
      * @param name The name of the company.
@@ -22,6 +22,7 @@ public class EBCompany
         this.name = name;
         this.subscribedBikes = new ArrayList<>();
         this.stations = new ArrayList<>();
+        this.currentTurn = 0;
     }
 
     /**
@@ -61,6 +62,18 @@ public class EBCompany
         return null;
     }
 
+    public int getCurrentTurn(){
+        return currentTurn;
+    }
+    
+    
+    //Simula que avanza un turno.
+    public void step(){
+        currentTurn++;
+        for(ElectricBike bike : subscribedBikes){
+            bike.act();
+        }
+    }
     /**
      * Retrieves a {@link BikeStation} by its {@link Location}.
      * @param location The {@link Location} of the station to find.

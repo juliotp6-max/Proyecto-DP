@@ -1,10 +1,14 @@
 #BlueJ class context
-#Tue Nov 03 17:11:20 CET 2026
+#Thu Nov 05 18:21:34 CET 2026
 comment0.target=EBCompany
 comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
 comment1.params=name
 comment1.target=EBCompany(java.lang.String)
 comment1.text=\r\n Constructor for objects of class EBCompany.\r\n @param name The name of the company.\r\n
+comment10.target=int getNumberOfStations()
+comment10.text=\r\n @return The total number of managed {@link BikeStation}s.\r\n
+comment11.target=void reset()
+comment11.text=\r\n Clears all managed bikes and stations, resetting the company to an empty state.\r\n
 comment2.params=bike
 comment2.target=void addElectricBike(ElectricBike)
 comment2.text=\r\n Adds an {@link ElectricBike} to the company's fleet.\r\n @param bike The electric bike to add.\r\n
@@ -14,16 +18,14 @@ comment3.text=\r\n Adds a {@link BikeStation} to the company's network.\r\n @par
 comment4.params=id
 comment4.target=BikeStation getBikeStation(java.lang.String)
 comment4.text=\r\n Retrieves a {@link BikeStation} by its unique ID.\r\n @param id The ID of the station to find.\r\n @return The {@link BikeStation} with the matching ID, or {@code null} if not found.\r\n
-comment5.params=location
-comment5.target=BikeStation getBikeStation(Location)
-comment5.text=\r\n Retrieves a {@link BikeStation} by its {@link Location}.\r\n @param location The {@link Location} of the station to find.\r\n @return The {@link BikeStation} at the matching location, or {@code null} if not found.\r\n
-comment6.params=location
-comment6.target=BikeStation getBikeStationAt(Location)
-comment6.text=\r\n Retrieves a {@link BikeStation} at a given location (alias used by ElectricBike).\r\n @param location The location to check.\r\n @return The BikeStation at that location, or null if none.\r\n
-comment7.target=java.util.List getBikeStations()
-comment7.text=\r\n Returns the full list of bike stations managed by the company.\r\n @return List of bike stations.\r\n
-comment8.target=int getNumberOfStations()
-comment8.text=\r\n @return The total number of managed {@link BikeStation}s.\r\n
-comment9.target=void reset()
-comment9.text=\r\n Clears all managed bikes and stations, resetting the company to an empty state.\r\n
-numComments=10
+comment5.target=int getCurrentTurn()
+comment6.target=void step()
+comment7.params=location
+comment7.target=BikeStation getBikeStation(Location)
+comment7.text=\r\n Retrieves a {@link BikeStation} by its {@link Location}.\r\n @param location The {@link Location} of the station to find.\r\n @return The {@link BikeStation} at the matching location, or {@code null} if not found.\r\n
+comment8.params=location
+comment8.target=BikeStation getBikeStationAt(Location)
+comment8.text=\r\n Retrieves a {@link BikeStation} at a given location (alias used by ElectricBike).\r\n @param location The location to check.\r\n @return The BikeStation at that location, or null if none.\r\n
+comment9.target=java.util.List getBikeStations()
+comment9.text=\r\n Returns the full list of bike stations managed by the company.\r\n @return List of bike stations.\r\n
+numComments=12

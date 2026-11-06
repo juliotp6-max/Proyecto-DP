@@ -1,5 +1,5 @@
 #BlueJ class context
-#Tue Nov 03 17:11:21 CET 2026
+#Thu Nov 05 18:21:34 CET 2026
 comment0.target=BikeStation
 comment0.text=\r\n Models an Electric Vehicle Charging Station.\r\n A charging station contains multiple {@link Dock} units.\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.target=BikeStation()

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 /**
  * Model a dock unit within a {@link BikeStation}.
@@ -17,7 +18,19 @@ public class Dock
     private List<ElectricBike> bikesRecharged;
     private float amountCollected;
     private boolean free;
-
+    
+    
+    /**
+     *Compara los Dock por su velocidad de carga en orden decreciente
+     *en caso de empate por su tarifa, en orden creciente y si hay empate por el id
+     *en orden creciente
+        */
+    public static final Comparator<Dock> COMPARADOR_DOCK = Comparator
+    .comparing(Dock::getChargingSpeed)
+    .reversed()
+    .thenComparing(Dock::getChargingFee)
+    .thenComparing(Dock::getId);
+    
     /**
      * Constructor for objects of class Dock.
      * @param id The unique identifier of the dock (e.g. CC01_02).
@@ -142,4 +155,6 @@ public class Dock
     public float recharge(ElectricBike bike) {
         return recharge(bike, chargingSpeed);
     }
+    
+
 }
