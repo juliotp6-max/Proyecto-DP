@@ -1,0 +1,17 @@
+#BlueJ class context
+#Sun Nov 08 12:20:45 CET 2026
+comment0.target=EBCompanyTest
+comment0.text=\r\n Pruebas unitarias para la clase EBCompany.\r\n
+comment1.target=void setUp()
+comment2.target=void tearDown()
+comment3.target=void testAdditionsAndCounts()
+comment3.text=\r\n Prueba la adici\u00F3n correcta de bicicletas y estaciones a la compa\u00F1\u00EDa.\r\n
+comment4.target=void testFindStations()
+comment4.text=\r\n Prueba la b\u00FAsqueda de estaciones por ID y por ubicaci\u00F3n.\r\n
+comment5.target=void testTurnAndStep()
+comment5.text=\r\n Prueba el avance de turnos y la simulaci\u00F3n del m\u00E9todo step().\r\n
+comment6.target=void testSortBikesById()
+comment6.text=\r\n Prueba la ordenaci\u00F3n de las bicicletas suscritas por ID.\r\n
+comment7.target=void testReset()
+comment7.text=\r\n Prueba el reseteo completo de la compa\u00F1\u00EDa.\r\n
+numComments=8

@@ -1,8 +1,8 @@
 import java.util.*;
 
 /**
- * Model a location in a two-dimensional grid city using (x, y) coordinates.
- * @author David J. Barnes and Michael Kölling
+ * Modela una ubicación en una ciudad con cuadrícula bidimensional utilizando coordenadas (x, y).
+ * @author David J. Barnes y Michael Kölling
  * @author DP classes 
  * @version 2026.10.13
  */
@@ -12,10 +12,10 @@ public class Location
     private int y;
 
     /**
-     * Model a location in the city.
-     * @param x The x coordinate. Must be non-negative.
-     * @param y The y coordinate. Must be non-negative.
-     * @throws IllegalArgumentException If a coordinate is negative.
+     * Modela una ubicación en la ciudad.
+     * @param x La coordenada x. Debe ser no negativa.
+     * @param y La coordenada y. Debe ser no negativa.
+     * @throws IllegalArgumentException Si alguna coordenada es negativa.
      */
     public Location(int x, int y)
     {
@@ -32,11 +32,11 @@ public class Location
     }
     
     /**
-     * Generates the next location to visit in a direct line (Manhattan-style diagonal/straight move) 
-     * from this location to the destination.
-     * @param destination The {@link Location} we want to get to.
-     * @return The next {@link Location} one step closer to the destination. Returns the destination
-     * if this location is already the destination.
+     * Genera la siguiente ubicación a visitar en línea recta (movimiento diagonal/recto al estilo Manhattan) 
+     * desde esta ubicación hasta el destino.
+     * @param destination La {@link Location} a la que queremos llegar.
+     * @return La siguiente {@link Location} un paso más cerca del destino. Devuelve el destino
+     * si esta ubicación ya es el destino.
      */
     public Location nextLocation(Location destination)
     {
@@ -63,10 +63,10 @@ public class Location
     }
 
     /**
-     * Determines the number of movements required to get from here to the destination, 
-     * using the Chebyshev distance (maximum of the absolute differences of the coordinates).
-     * @param destination The required destination {@link Location}.
-     * @return The number of movement steps.
+     * Determina el número de movimientos requeridos para llegar desde aquí hasta el destino, 
+     * utilizando la distancia de Chebyshev (máximo de las diferencias absolutas de las coordenadas).
+     * @param destination La {@link Location} de destino requerida.
+     * @return El número de pasos de movimiento.
      */
     public int distance(Location destination)
     {
@@ -79,9 +79,9 @@ public class Location
     }
     
     /**
-     * Implement content equality for locations.
-     * @param other The object to compare with.
-     * @return {@code true} if the other object is a {@link Location} and has the same x and y coordinates, {@code false} otherwise.
+     * Implementa la igualdad de contenido para las ubicaciones.
+     * @param other El objeto con el que comparar.
+     * @return {@code true} si el otro objeto es una {@link Location} y tiene las mismas coordenadas x e y, {@code false} en caso contrario.
      */
     @Override
     public boolean equals(Object other)
@@ -94,7 +94,7 @@ public class Location
     }
     
     /**
-     * @return A string representation of the location in the format "x-y".
+     * @return Una representación en cadena de la ubicación en el formato "x-y".
      */
     @Override
     public String toString()
@@ -103,10 +103,10 @@ public class Location
     }
 
     /**
-     * Generates a hash code for the location.
-     * It uses the top 16 bits for the y value and the bottom 16 bits for the x value
-     * to ensure a unique hash code for most grid sizes.
-     * @return A hashcode for the location.
+     * Genera un código hash para la ubicación.
+     * Utiliza los 16 bits superiores para el valor de y y los 16 bits inferiores para el valor de x
+     * para asegurar un código hash único para la mayoría de los tamaños de cuadrícula.
+     * @return Un código hash para la ubicación.
      */
     @Override
     public int hashCode()
@@ -115,7 +115,7 @@ public class Location
     }
 
     /**
-     * @return The x coordinate.
+     * @return La coordenada x.
      */
     public int getX()
     {
@@ -123,7 +123,7 @@ public class Location
     }
 
     /**
-     * @return The y coordinate.
+     * @return La coordenada y.
      */
     public int getY()
     {

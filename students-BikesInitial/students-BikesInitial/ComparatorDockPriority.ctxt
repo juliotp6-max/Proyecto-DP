@@ -1,0 +1,7 @@
+#BlueJ class context
+#Sun Nov 08 12:20:45 CET 2026
+comment0.target=ComparatorDockPriority
+comment0.text=\r\n Compara dos objetos {@link Dock} bas\u00E1ndose en su velocidad de carga en orden decreciente,\r\n en caso de empate por su tarifa de carga en orden creciente,\r\n y si hay otro empate, por su ID en orden creciente.\r\n \r\n @author DP classes\r\n @version 2026.10.13\r\n @param d1 El primer dock a comparar.\r\n @param d2 El segundo dock a comparar.\r\n @return Un entero negativo, cero o un entero positivo seg\u00FAn el criterio de ordenaci\u00F3n.\r\n
+comment1.params=d1 d2
+comment1.target=int compare(Dock, Dock)
+numComments=2

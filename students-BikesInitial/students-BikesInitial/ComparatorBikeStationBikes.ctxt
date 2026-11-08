@@ -1,0 +1,7 @@
+#BlueJ class context
+#Sun Nov 08 12:20:45 CET 2026
+comment0.target=ComparatorBikeStationBikes
+comment0.text=\r\n Compara dos objetos {@link BikeStation} bas\u00E1ndose en el n\u00FAmero total de bicicletas \r\n recargadas en los docks de la estaci\u00F3n en orden decreciente, y en caso de empate, \r\n por su ID en orden creciente.\r\n \r\n @author DP classes\r\n @version 2026.10.13\r\n @param st1 La primera estaci\u00F3n de bicicletas a comparar.\r\n @param st2 La segunda estaci\u00F3n de bicicletas a comparar.\r\n @return Un entero negativo, cero o un entero positivo seg\u00FAn el criterio de ordenaci\u00F3n.\r\n
+comment1.params=st1 st2
+comment1.target=int compare(BikeStation, BikeStation)
+numComments=2

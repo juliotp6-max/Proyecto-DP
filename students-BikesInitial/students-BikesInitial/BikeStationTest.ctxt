@@ -1,0 +1,9 @@
+#BlueJ class context
+#Sun Nov 08 12:20:43 CET 2026
+comment0.target=BikeStationTest
+comment0.text=\r\n Pruebas unitarias para la clase BikeStation.\r\n
+comment1.target=void setUp()
+comment2.target=void tearDown()
+comment3.target=void testAddDock()
+comment3.text=\r\n Comprueba que la operaci\u00F3n para a\u00F1adir un nuevo dock funciona \r\n y mantiene el listado actualizado.\r\n
+numComments=4

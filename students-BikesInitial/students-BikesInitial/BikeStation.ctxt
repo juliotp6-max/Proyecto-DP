@@ -1,0 +1,30 @@
+#BlueJ class context
+#Sun Nov 08 12:20:42 CET 2026
+comment0.target=BikeStation
+comment0.text=\r\n Modela una estaci\u00F3n de recarga de veh\u00EDculos el\u00E9ctricos.\r\n Una estaci\u00F3n de carga contiene m\u00FAltiples unidades de d\u00E1rsenas ({@link Dock}).\r\n @author DP classes \r\n @version 2026.10.13\r\n
+comment1.target=BikeStation()
+comment1.text=\r\n Constructor para objetos de la clase BikeStation (por defecto).\r\n
+comment10.params=location
+comment10.target=void setLocation(Location)
+comment10.text=\r\n Establece la ubicaci\u00F3n actual de la estaci\u00F3n de carga.\r\n @param location D\u00F3nde se encuentra. No debe ser nula.\r\n @throws NullPointerException Si location es nula.\r\n
+comment11.target=java.lang.String toString()
+comment11.text=\r\n Devuelve una representaci\u00F3n en cadena de la estaci\u00F3n de bicicletas.\r\n @return Una cadena que contiene los detalles de la estaci\u00F3n.\r\n
+comment2.params=id location
+comment2.target=BikeStation(java.lang.String, Location)
+comment2.text=\r\n Constructor para objetos de la clase BikeStation.\r\n @param id El identificador \u00FAnico de la estaci\u00F3n.\r\n @param location La ubicaci\u00F3n de la estaci\u00F3n.\r\n
+comment3.target=Dock getFreeDock()
+comment3.text=\r\n M\u00E9todo con Iterator que devuelve un dock que est\u00E9 vac\u00EDo o nulo si est\u00E1n todos llenos.\r\n @return Un {@link Dock} libre, o null si no se encuentra ninguno.\r\n
+comment4.target=java.lang.String getId()
+comment4.text=\r\n @return El identificador \u00FAnico de la estaci\u00F3n de carga.\r\n
+comment5.target=Location getLocation()
+comment5.text=\r\n M\u00E9todo que devuelve la localizaci\u00F3n donde est\u00E1 la estaci\u00F3n de bicicletas.\r\n @return La localizaci\u00F3n de la estaci\u00F3n.\r\n
+comment6.target=java.util.List getDocks()
+comment6.text=\r\n M\u00E9todo que devuelve la colecci\u00F3n docks.\r\n @return La lista de d\u00E1rsenas de la estaci\u00F3n.\r\n
+comment7.params=dock
+comment7.target=void addDock(Dock)
+comment7.text=\r\n M\u00E9todo que permite a\u00F1adir un nuevo dock de tipo Dock a la colecci\u00F3n docks,\r\n manteniendo el orden establecido (decreciente por velocidad, creciente por tarifa, creciente por ID).\r\n @param dock El nuevo Dock a a\u00F1adir.\r\n
+comment8.target=void sortDocks()
+comment8.text=\r\n Ordena la colecci\u00F3n de docks seg\u00FAn los criterios de la Entrega Inicial\:\r\n - Decreciente por velocidad de carga.\r\n - Creciente por tarifa de carga.\r\n - Creciente por identificador.\r\n
+comment9.params=d1 d2
+comment9.target=int compare(Dock, Dock)
+numComments=12

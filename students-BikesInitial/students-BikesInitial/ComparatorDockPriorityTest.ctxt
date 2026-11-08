@@ -1,0 +1,11 @@
+#BlueJ class context
+#Sun Nov 08 12:25:33 CET 2026
+comment0.target=ComparatorDockPriorityTest
+comment0.text=\r\n Pruebas unitarias para la clase ComparatorDockPriority utilizando JUnit 5.\r\n Verifica que los docks se comparen correctamente seg\u00FAn su prioridad \r\n (velocidad decreciente, tarifa de carga creciente e ID creciente).\r\n \r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment1.target=void setUp()
+comment1.text=\r\n Configuraci\u00F3n inicial (fixture) que se ejecuta antes de cada caso de prueba.\r\n
+comment2.target=void tearDown()
+comment2.text=\r\n Limpieza que se ejecuta despu\u00E9s de cada caso de prueba.\r\n
+comment3.target=void testComparatorDockPriority()
+comment3.text=\r\n Prueba el comparador de docks por prioridad bas\u00E1ndose principalmente \r\n en la velocidad de carga en orden decreciente.\r\n
+numComments=4

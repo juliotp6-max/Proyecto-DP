@@ -1,0 +1,9 @@
+#BlueJ class context
+#Sun Nov 08 12:20:45 CET 2026
+comment0.target=DockTest
+comment0.text=\r\n Pruebas unitarias para la clase Dock.\r\n
+comment1.target=void setUp()
+comment2.target=void tearDown()
+comment3.target=void testRecharge()
+comment3.text=\r\n Prueba el m\u00E9todo recharge, verificando el c\u00E1lculo del coste, \r\n la actualizaci\u00F3n de lo recaudado y el registro de la bicicleta recargada.\r\n
+numComments=4

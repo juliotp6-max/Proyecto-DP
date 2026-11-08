@@ -1,0 +1,10 @@
+#BlueJ class context
+#Sun Nov 08 12:26:19 CET 2026
+comment0.target=ComparatorEBTurnTest
+comment0.text=\r\n Pruebas unitarias para la clase ComparatorEBTurn.\r\n Compara bicicletas el\u00E9ctricas por turno de llegada y desempatando por ID en orden creciente.\r\n \r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment1.target=void setUp()
+comment1.text=\r\n Configuraci\u00F3n inicial (fixture) que se ejecuta antes de cada caso de prueba.\r\n
+comment2.target=void tearDown()
+comment2.text=\r\n Limpieza que se ejecuta despu\u00E9s de cada caso de prueba.\r\n
+comment3.target=void testComparatorEBTurn()
+numComments=4

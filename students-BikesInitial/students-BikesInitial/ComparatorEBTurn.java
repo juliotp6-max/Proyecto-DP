@@ -10,8 +10,8 @@ import java.util.Comparator;
 public class ComparatorEBTurn implements Comparator<ElectricBike>
 {
     public int compare(ElectricBike e1, ElectricBike e2){
-        int turn1 = e1.getArrivalTurn();
-        int turn2 = e2.getArrivalTurn();
+        int turn1 = e1.getTurn();
+        int turn2 = e2.getTurn();
         
         // 1. Orden creciente por turno de llegada
         if (turn1 != turn2) {

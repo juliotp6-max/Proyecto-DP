@@ -1,0 +1,25 @@
+#BlueJ class context
+#Sun Nov 08 12:20:08 CET 2026
+comment0.target=Location
+comment0.text=\r\n Modela una ubicaci\u00F3n en una ciudad con cuadr\u00EDcula bidimensional utilizando coordenadas (x, y).\r\n @author David J. Barnes y Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
+comment1.params=x y
+comment1.target=Location(int, int)
+comment1.text=\r\n Modela una ubicaci\u00F3n en la ciudad.\r\n @param x La coordenada x. Debe ser no negativa.\r\n @param y La coordenada y. Debe ser no negativa.\r\n @throws IllegalArgumentException Si alguna coordenada es negativa.\r\n
+comment2.params=destination
+comment2.target=Location nextLocation(Location)
+comment2.text=\r\n Genera la siguiente ubicaci\u00F3n a visitar en l\u00EDnea recta (movimiento diagonal/recto al estilo Manhattan) \r\n desde esta ubicaci\u00F3n hasta el destino.\r\n @param destination La {@link Location} a la que queremos llegar.\r\n @return La siguiente {@link Location} un paso m\u00E1s cerca del destino. Devuelve el destino\r\n si esta ubicaci\u00F3n ya es el destino.\r\n
+comment3.params=destination
+comment3.target=int distance(Location)
+comment3.text=\r\n Determina el n\u00FAmero de movimientos requeridos para llegar desde aqu\u00ED hasta el destino, \r\n utilizando la distancia de Chebyshev (m\u00E1ximo de las diferencias absolutas de las coordenadas).\r\n @param destination La {@link Location} de destino requerida.\r\n @return El n\u00FAmero de pasos de movimiento.\r\n
+comment4.params=other
+comment4.target=boolean equals(java.lang.Object)
+comment4.text=\r\n Implementa la igualdad de contenido para las ubicaciones.\r\n @param other El objeto con el que comparar.\r\n @return {@code true} si el otro objeto es una {@link Location} y tiene las mismas coordenadas x e y, {@code false} en caso contrario.\r\n
+comment5.target=java.lang.String toString()
+comment5.text=\r\n @return Una representaci\u00F3n en cadena de la ubicaci\u00F3n en el formato "x-y".\r\n
+comment6.target=int hashCode()
+comment6.text=\r\n Genera un c\u00F3digo hash para la ubicaci\u00F3n.\r\n Utiliza los 16 bits superiores para el valor de y y los 16 bits inferiores para el valor de x\r\n para asegurar un c\u00F3digo hash \u00FAnico para la mayor\u00EDa de los tama\u00F1os de cuadr\u00EDcula.\r\n @return Un c\u00F3digo hash para la ubicaci\u00F3n.\r\n
+comment7.target=int getX()
+comment7.text=\r\n @return La coordenada x.\r\n
+comment8.target=int getY()
+comment8.text=\r\n @return La coordenada y.\r\n
+numComments=9

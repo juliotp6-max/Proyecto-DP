@@ -2,10 +2,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Comparator;
+
 /**
- * Model the common elements of an Electric bike (EB) that operates 
- * within the simulation, moving towards a target and potentially recharging.
- * @author David J. Barnes and Michael Kölling
+ * Modela los elementos comunes de una bicicleta eléctrica (EB) que opera
+ * dentro de la simulación, desplazándose hacia un destino y recargándose potencialmente.
+ * @author David J. Barnes y Michael Kölling
  * @author DP classes 
  * @version 2026.10.13
  */
@@ -24,18 +25,18 @@ public class ElectricBike
     private int idleCount;
     private List<Dock> docks;
     private double totalWhCharged; // Acumulador de wh cargados en total
-    private int turn; //Variable que se utiliza para comprobar el turno de llegada entre dos EBike que van a un mismo destino.
+    private int turn; // Variable que se utiliza para comprobar el turno de llegada entre dos EBike que van a un mismo destino.
 
     public static final Comparator<ElectricBike> COMPARADOR_EBIKE = Comparator.comparing(ElectricBike::getIdBike);
     
     /**
-     * Constructor of class ElectricBike.
-     * @param company The EB's operating company. Must not be null.
-     * @param location The EB's starting {@link Location}. Must not be null.
-     * @param targetLocation The EB's final destination {@link Location}. Must not be null.
-     * @param id The identificator of the bike.
-     * @param batteryCapacity The maximum capacity of the battery.
-     * @throws NullPointerException If company, location, or targetLocation is null.
+     * Constructor de la clase ElectricBike.
+     * @param company La compañía operadora de la bicicleta eléctrica. No debe ser nula.
+     * @param location La {@link Location} inicial de la bicicleta eléctrica. No debe ser nula.
+     * @param targetLocation La {@link Location} de destino final de la bicicleta eléctrica. No debe ser nula.
+     * @param id El identificador de la bicicleta.
+     * @param batteryCapacity La capacidad máxima de la batería.
+     * @throws NullPointerException Si company, location o targetLocation son nulos.
      */
     public ElectricBike(EBCompany company, Location location, Location targetLocation, String id, int batteryCapacity)
     {
@@ -58,7 +59,7 @@ public class ElectricBike
     }
 
     /**
-     * @return The id of the electric bike.
+     * @return El identificador de la bicicleta eléctrica.
      */
     public String getIdBike()
     {
@@ -66,9 +67,9 @@ public class ElectricBike
     }
 
     /**
-     * Set the current location.
-     * @param location Where it is. Must not be null.
-     * @throws NullPointerException If location is null.
+     * Establece la ubicación actual.
+     * @param location Dónde se encuentra. No debe ser nula.
+     * @throws NullPointerException Si location es nula.
      */
     public void setLocation(Location location)
     {
@@ -79,8 +80,8 @@ public class ElectricBike
     }
 
     /**
-     * Get the final target location.
-     * @return Where this bike is ultimately headed.
+     * Obtiene la ubicación de destino final.
+     * @return Hacia dónde se dirige en última instancia esta bicicleta.
      */
     public Location getTargetLocation()
     {
@@ -88,8 +89,8 @@ public class ElectricBike
     }
 
     /**
-     * Get the temporary recharging location.
-     * @return The {@link Location} of the next {@link BikeStation} to visit, or null if no recharge is planned.
+     * Obtiene la ubicación de recarga temporal.
+     * @return La {@link Location} de la siguiente {@link BikeStation} a visitar, o null si no hay recarga planeada.
      */
     public Location getRechargingLocation()
     {
@@ -97,9 +98,9 @@ public class ElectricBike
     }
 
     /**
-     * Set the required final target location.
-     * @param location Where to go. Must not be null.
-     * @throws NullPointerException If location is null.
+     * Establece la ubicación de destino final requerida.
+     * @param location Dónde ir. No debe ser nula.
+     * @throws NullPointerException Si location es nula.
      */
     public void setTargetLocation(Location location)
     {
@@ -110,7 +111,7 @@ public class ElectricBike
     }
 
     /**
-     * @return The current location of the electric bike.
+     * @return La ubicación actual de la bicicleta eléctrica.
      */
     public Location getLocation()
     {
@@ -118,9 +119,9 @@ public class ElectricBike
     }
     
     /**
-     * Calculates the optimal route for the bike. 
-     * If there isn't enough battery to reach the target, it attempts to find an intermediate 
-     * {@link BikeStation} and sets it as the {@code rechargingLocation}.
+     * Calcula la ruta óptima para la bicicleta. 
+     * Si no hay suficiente batería para alcanzar el destino, intenta encontrar una 
+     * {@link BikeStation} intermedia y la establece como {@code rechargingLocation}.
      */
     public void calculateRoute()
     {
@@ -132,8 +133,8 @@ public class ElectricBike
     }
 
     /**
-     * Gets a string representation of the planned route, including the recharging stop if one exists.
-     * @return A string showing the route: {@code currentLocation -> [rechargingLocation ->] targetLocation}.
+     * Obtiene una representación en cadena de la ruta planificada, incluyendo la parada de recarga si existe alguna.
+     * @return Una cadena que muestra la ruta: {@code currentLocation -> [rechargingLocation ->] targetLocation}.
      */
     public String getStringRoute()
     {
@@ -147,10 +148,11 @@ public class ElectricBike
     public int getTurn(){
         return turn;
     }
+    
     /**
-     * Checks if the current battery level is sufficient to cover a given distance to a location.
-     * @param dest The destination location to check.
-     * @return true if battery is enough, false otherwise.
+     * Comprueba si el nivel actual de batería es suficiente para cubrir una distancia dada hacia una ubicación.
+     * @param dest La ubicación de destino a comprobar.
+     * @return true si la batería es suficiente, false en caso contrario.
      */
     public boolean enoughBattery(Location dest)
     {
@@ -163,12 +165,11 @@ public class ElectricBike
     }
 
     /**
-     *Muestra la estacion de biciclitas ({@link BikeStation}) mas cercana a la
-     *que dirigirse para recargar cuando no dispone de suficiente bateria para 
-     *llegar al destino fijado.
-     *Recorre todas las estaciones de la empresa a traves de un {@Link Iterator}
-     *las distancias y la bateria que se dispone
-     *
+     * Muestra la estación de bicicletas ({@link BikeStation}) más cercana a la
+     * que dirigirse para recargar cuando no dispone de suficiente batería para 
+     * llegar al destino fijado.
+     * Recorre todas las estaciones de la empresa a través de un {@link Iterator}
+     * evaluando las distancias y la batería disponible.
      */
     public void calculateRechargingPosition()
     {
@@ -184,8 +185,8 @@ public class ElectricBike
                 int distToStation = location.distance(station.getLocation());
                 int distStationToTarget = station.getLocation().distance(targetLocation);
                 int totalDist = distToStation + distStationToTarget;
-                if(totalDist<minTotalDistance){
-                    minTotalDistance=totalDist;
+                if(totalDist < minTotalDistance){
+                    minTotalDistance = totalDist;
                     bestStation = station;
                 }
             }
@@ -198,8 +199,8 @@ public class ElectricBike
     }
 
     /**
-     * Get the Manhattan-like distance to the final target location from the current location.
-     * @return The distance to the target location.
+     * Obtiene la distancia estilo Manhattan hacia la ubicación de destino final desde la ubicación actual.
+     * @return La distancia al destino.
      */
     public int distanceToTheTargetLocation()
     {
@@ -210,8 +211,8 @@ public class ElectricBike
     }
 
     /**
-     * Simulates the recharging process when the bike arrives at a {@code rechargingLocation}.
-     * The battery is charged to full capacity, the cost is calculated, and the route is recalculated.
+     * Simula el proceso de recarga cuando la bicicleta llega a una {@code rechargingLocation}.
+     * La batería se carga a su capacidad máxima, se calcula el coste y se recalcula la ruta.
      */
     public void recharge()
     {
@@ -238,7 +239,7 @@ public class ElectricBike
     }  
 
     /**
-     * Increments the count of recharges performed by this bike.
+     * Incrementa el contador de recargas realizadas por esta bicicleta.
      */
     public void incrementCharges()
     {
@@ -246,19 +247,19 @@ public class ElectricBike
     }
 
     /**
-     * Adds a cost amount to the total charges cost.
-     * @param cost The cost to add.
+     * Añade una cantidad de coste al coste total de las recargas.
+     * @param cost El coste a añadir.
      */
     public void incrementChargesCost(float cost)
     {
         if (cost > 0) {
             chargesCost += cost;
         }
-    }   
+    }    
 
     /**
-     * Carries out a single step of the bike's actions.
-     * Moves one step towards the target (recharging or final) or stays idle.
+     * Ejecuta un único paso de las acciones de la bicicleta.
+     * Se desplaza un paso hacia el destino (de recarga o final) o permanece inactiva.
      */
     public void act()
     {
@@ -275,7 +276,7 @@ public class ElectricBike
                 recharge();
             }
         } else {
-            // CORREGIDO: Actualizamos la posición con setLocation usando nextLocation
+            // Actualizamos la posición con setLocation usando nextLocation
             setLocation(location.nextLocation(destination));
             reduceBatteryLevel();
 
@@ -287,8 +288,8 @@ public class ElectricBike
     }
 
     /**
-     * Reduces the battery level by the cost of one movement step (5 wh).
-     * Ensures the battery level does not go below zero.
+     * Reduce el nivel de batería por el coste de un paso de movimiento (5 wh).
+     * Asegura que el nivel de batería no baje de cero.
      */
     public void reduceBatteryLevel(){
         batteryLevel -= 5;
@@ -298,8 +299,8 @@ public class ElectricBike
     }
 
     /**
-     * Returns a detailed string representation of the electric bike.
-     * @return A string containing the bike's name, plate, battery info, charge counts, costs, idle count, and route.
+     * Devuelve una representación detallada en cadena de la bicicleta eléctrica.
+     * @return Una cadena que contiene el nombre/id de la bicicleta, información de batería, conteo de cargas, costes, inactividad y ruta.
      */
     @Override
     public String toString() {
@@ -307,6 +308,4 @@ public class ElectricBike
         cad = cad + batteryCapacity + "wh, " + numberOfCharges + ", " + chargesCost + ", " + idleCount + ")";
         return cad;
     }
-    
-    
 }

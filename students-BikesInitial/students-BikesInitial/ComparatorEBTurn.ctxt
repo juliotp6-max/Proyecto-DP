@@ -1,0 +1,7 @@
+#BlueJ class context
+#Sun Nov 08 12:20:45 CET 2026
+comment0.target=ComparatorEBTurn
+comment0.text=\r\n Compares two ElectricBike objects based on their arrival turn in ascending order,\r\n and in case of a tie, by their ID in ascending order.\r\n \r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment1.params=e1 e2
+comment1.target=int compare(ElectricBike, ElectricBike)
+numComments=2

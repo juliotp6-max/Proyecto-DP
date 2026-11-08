@@ -1,0 +1,35 @@
+#BlueJ class context
+#Sun Nov 08 12:20:42 CET 2026
+comment0.target=EBCompany
+comment0.text=\r\n Modela el funcionamiento de una compa\u00F1\u00EDa de bicicletas el\u00E9ctricas (EB).\r\n Gestiona una flota de {@link ElectricBike} y una red de {@link BikeStation}.\r\n @author David J. Barnes y Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment1.params=name
+comment1.target=EBCompany(java.lang.String)
+comment1.text=\r\n Constructor para objetos de la clase EBCompany.\r\n @param name El nombre de la compa\u00F1\u00EDa.\r\n
+comment10.target=void sortBikesById()
+comment10.text=\r\n Ordena las bicicletas suscritas de forma creciente por su ID.\r\n
+comment11.target=int getNumberOfStations()
+comment11.text=\r\n @return El n\u00FAmero total de {@link BikeStation} gestionadas.\r\n
+comment12.target=void reset()
+comment12.text=\r\n Limpia todas las bicicletas y estaciones gestionadas, restableciendo la compa\u00F1\u00EDa a un estado vac\u00EDo.\r\n
+comment2.params=bike
+comment2.target=void addElectricBike(ElectricBike)
+comment2.text=\r\n A\u00F1ade una {@link ElectricBike} a la flota de la compa\u00F1\u00EDa.\r\n @param bike La bicicleta el\u00E9ctrica a a\u00F1adir.\r\n
+comment3.params=station
+comment3.target=void addBikeStation(BikeStation)
+comment3.text=\r\n A\u00F1ade una {@link BikeStation} a la red de la compa\u00F1\u00EDa.\r\n @param station La estaci\u00F3n de bicicletas a a\u00F1adir.\r\n
+comment4.params=id
+comment4.target=BikeStation getBikeStation(java.lang.String)
+comment4.text=\r\n Recupera una {@link BikeStation} por su ID \u00FAnico.\r\n @param id El ID de la estaci\u00F3n a encontrar.\r\n @return La {@link BikeStation} con el ID coincidente, o {@code null} si no se encuentra.\r\n
+comment5.target=int getCurrentTurn()
+comment5.text=\r\n @return El turno actual de la simulaci\u00F3n.\r\n
+comment6.target=void step()
+comment6.text=\r\n Simula que avanza un turno en la compa\u00F1\u00EDa y en todas sus bicicletas.\r\n
+comment7.params=location
+comment7.target=BikeStation getBikeStation(Location)
+comment7.text=\r\n Recupera una {@link BikeStation} por su {@link Location} utilizando un Iterator.\r\n @param location La {@link Location} de la estaci\u00F3n a encontrar.\r\n @return La {@link BikeStation} en la ubicaci\u00F3n coincidente, o {@code null} si no se encuentra.\r\n
+comment8.params=location
+comment8.target=BikeStation getBikeStationAt(Location)
+comment8.text=\r\n Recupera una {@link BikeStation} en una ubicaci\u00F3n dada (alias utilizado por ElectricBike).\r\n @param location La ubicaci\u00F3n a comprobar.\r\n @return La BikeStation en esa ubicaci\u00F3n, o null si no hay ninguna.\r\n
+comment9.target=java.util.List getBikeStations()
+comment9.text=\r\n Devuelve la lista completa de estaciones de bicicletas gestionadas por la compa\u00F1\u00EDa.\r\n @return Lista de estaciones de bicicletas.\r\n
+numComments=13

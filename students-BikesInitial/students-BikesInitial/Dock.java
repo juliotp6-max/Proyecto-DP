@@ -3,9 +3,9 @@ import java.util.List;
 import java.util.Comparator;
 
 /**
- * Model a dock unit within a {@link BikeStation}.
- * It tracks its charging capabilities, fee, and the electric bikes it has recharged.
- * @author David J. Barnes and Michael Kölling
+ * Modela una unidad de dársena (dock) dentro de una {@link BikeStation}.
+ * Realiza un seguimiento de sus capacidades de carga, tarifa y de las bicicletas eléctricas que ha recargado.
+ * @author David J. Barnes y Michael Kölling
  * @author DP classes 
  * @version 2026.10.13
  */
@@ -21,10 +21,10 @@ public class Dock
     
     
     /**
-     *Compara los Dock por su velocidad de carga en orden decreciente
-     *en caso de empate por su tarifa, en orden creciente y si hay empate por el id
-     *en orden creciente
-        */
+     * Compara los Dock por su velocidad de carga en orden decreciente,
+     * en caso de empate por su tarifa en orden creciente y si hay empate por el id
+     * en orden creciente.
+     */
     public static final Comparator<Dock> COMPARADOR_DOCK = Comparator
     .comparing(Dock::getChargingSpeed)
     .reversed()
@@ -32,10 +32,10 @@ public class Dock
     .thenComparing(Dock::getId);
     
     /**
-     * Constructor for objects of class Dock.
-     * @param id The unique identifier of the dock (e.g. CC01_02).
-     * @param speed The charging speed of the dock in wh.
-     * @param fee The charging fee in €/wh.
+     * Constructor para objetos de la clase Dock.
+     * @param id El identificador único de la dársena (ej. CC01_02).
+     * @param speed La velocidad de carga de la dársena en wh.
+     * @param fee La tarifa de carga en €/wh.
      */
     public Dock(String id, int speed, float fee)
     {
@@ -48,73 +48,73 @@ public class Dock
     }
 
     /**
-     * Returns the unique identifier of the dock.
-     * @return The dock's ID.
+     * Devuelve el identificador único de la dársena.
+     * @return El ID de la dársena.
      */
     public String getId() {
         return idDock;
     }
 
     /**
-     * Returns the charging speed of the dock.
-     * @return The charging speed in wh.
+     * Devuelve la velocidad de carga de la dársena.
+     * @return La velocidad de carga en wh.
      */
     public int getChargingSpeed() {
         return chargingSpeed;
     }
 
     /**
-     * Returns the charging fee of the dock.
-     * @return The charging fee in €/wh.
+     * Devuelve la tarifa de carga de la dársena.
+     * @return La tarifa de carga en €/wh.
      */
     public float getChargingFee() {
         return chargingFee;
     }
 
     /**
-     * Indicates if the dock is free or occupied.
-     * @return true if free, false if occupied.
+     * Indica si la dársena está libre u ocupada.
+     * @return true si está libre, false si está ocupada.
      */
     public boolean isFree() {
         return free;
     }
 
     /**
-     * Sets the occupancy status of the dock.
-     * @param free boolean indicating free status.
+     * Establece el estado de ocupación de la dársena.
+     * @param free booleano que indica el estado de disponibilidad.
      */
     public void setFree(boolean free) {
         this.free = free;
     }
 
     /**
-     * Returns the total amount collected by this dock.
-     * @return Amount collected in €.
+     * Devuelve la cantidad total recaudada por esta dársena.
+     * @return Cantidad recaudada en €.
      */
     public float getAmountCollected() {
         return amountCollected;
     }
 
     /**
-     * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
-     * @return A string representation of the dock.
+     * Devuelve una representación en cadena de la dársena, incluyendo su ID, velocidad, tarifa y el número de EVs recargados.
+     * @return Una representación en cadena de la dársena.
      */
     public String toString()
     {
-        return "Dock [id=" + idDock + ", speed=" + chargingSpeed + ", fee=" + chargingFee + 
+        return "Dock [id=" + idDock + ", speed=" + chargingSpeed + ", fee=" + chargingFee +  
                ", rechargedBikes=" + getNumerEVRecharged() + ", collected=" + amountCollected + "€]";
     }   
 
     /**
-     * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
+     * @return El número total de {@link ElectricBike}s que han sido recargadas por esta dársena.
      */
     public int getNumerEVRecharged(){
         return bikesRecharged.size();
     }
     
     /**
-     * Adds a new bicycle object to the collection of recharged bikes if it is not already present.
-     * @param bike The ElectricBike to add.
+     * Añade un nuevo objeto bicicleta a la colección de bicicletas recargadas si no está presente ya.
+     * @param bike La ElectricBike a añadir.
      */
     public void addBikeRecharged(ElectricBike bike) {
         if (bike != null && !bikesRecharged.contains(bike)) {
@@ -123,8 +123,8 @@ public class Dock
     }
 
     /**
-     * Updates the amount collected by the dock by adding the new revenue.
-     * @param amount The amount to add in €.
+     * Actualiza la cantidad recaudada por la dársena añadiendo los nuevos ingresos.
+     * @param amount La cantidad a añadir en €.
      */
     public void updateAmountCollected(float amount) {
         if (amount > 0) {
@@ -133,11 +133,11 @@ public class Dock
     }
 
     /**
-     * Simulates the charging process for an {@link ElectricBike}.
-     * Increases the amount collected and registers the bike as recharged.
-     * @param bike The electric bike to recharge.
-     * @param whCharged Watt-hours charged during the process.
-     * @return The cost of the charge in €.
+     * Simula el proceso de carga para una {@link ElectricBike}.
+     * Incrementa la cantidad recaudada y registra la bicicleta como recargada.
+     * @param bike La bicicleta eléctrica a recargar.
+     * @param whCharged Vatios-hora cargados durante el proceso.
+     * @return El coste de la carga en €.
      */
     public float recharge(ElectricBike bike, int whCharged)
     {
@@ -148,13 +148,11 @@ public class Dock
     }
 
     /**
-     * Simulates the charging process using the standard charging speed capacity of the dock.
-     * @param bike The electric bike to recharge.
-     * @return The cost of the charge in €.
+     * Simula el proceso de carga utilizando la velocidad de carga estándar de la dársena.
+     * @param bike La bicicleta eléctrica a recargar.
+     * @return El coste de la carga en €.
      */
     public float recharge(ElectricBike bike) {
         return recharge(bike, chargingSpeed);
     }
-    
-
 }

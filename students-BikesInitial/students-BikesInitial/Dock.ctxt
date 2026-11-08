@@ -1,0 +1,37 @@
+#BlueJ class context
+#Sun Nov 08 12:20:42 CET 2026
+comment0.target=Dock
+comment0.text=\r\n Modela una unidad de d\u00E1rsena (dock) dentro de una {@link BikeStation}.\r\n Realiza un seguimiento de sus capacidades de carga, tarifa y de las bicicletas el\u00E9ctricas que ha recargado.\r\n @author David J. Barnes y Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
+comment1.params=id speed fee
+comment1.target=Dock(java.lang.String, int, float)
+comment1.text=\r\n Constructor para objetos de la clase Dock.\r\n @param id El identificador \u00FAnico de la d\u00E1rsena (ej. CC01_02).\r\n @param speed La velocidad de carga de la d\u00E1rsena en wh.\r\n @param fee La tarifa de carga en \u20AC/wh.\r\n
+comment10.params=bike
+comment10.target=void addBikeRecharged(ElectricBike)
+comment10.text=\r\n A\u00F1ade un nuevo objeto bicicleta a la colecci\u00F3n de bicicletas recargadas si no est\u00E1 presente ya.\r\n @param bike La ElectricBike a a\u00F1adir.\r\n
+comment11.params=amount
+comment11.target=void updateAmountCollected(float)
+comment11.text=\r\n Actualiza la cantidad recaudada por la d\u00E1rsena a\u00F1adiendo los nuevos ingresos.\r\n @param amount La cantidad a a\u00F1adir en \u20AC.\r\n
+comment12.params=bike whCharged
+comment12.target=float recharge(ElectricBike, int)
+comment12.text=\r\n Simula el proceso de carga para una {@link ElectricBike}.\r\n Incrementa la cantidad recaudada y registra la bicicleta como recargada.\r\n @param bike La bicicleta el\u00E9ctrica a recargar.\r\n @param whCharged Vatios-hora cargados durante el proceso.\r\n @return El coste de la carga en \u20AC.\r\n
+comment13.params=bike
+comment13.target=float recharge(ElectricBike)
+comment13.text=\r\n Simula el proceso de carga utilizando la velocidad de carga est\u00E1ndar de la d\u00E1rsena.\r\n @param bike La bicicleta el\u00E9ctrica a recargar.\r\n @return El coste de la carga en \u20AC.\r\n
+comment2.target=java.lang.String getId()
+comment2.text=\r\n Devuelve el identificador \u00FAnico de la d\u00E1rsena.\r\n @return El ID de la d\u00E1rsena.\r\n
+comment3.target=int getChargingSpeed()
+comment3.text=\r\n Devuelve la velocidad de carga de la d\u00E1rsena.\r\n @return La velocidad de carga en wh.\r\n
+comment4.target=float getChargingFee()
+comment4.text=\r\n Devuelve la tarifa de carga de la d\u00E1rsena.\r\n @return La tarifa de carga en \u20AC/wh.\r\n
+comment5.target=boolean isFree()
+comment5.text=\r\n Indica si la d\u00E1rsena est\u00E1 libre u ocupada.\r\n @return true si est\u00E1 libre, false si est\u00E1 ocupada.\r\n
+comment6.params=free
+comment6.target=void setFree(boolean)
+comment6.text=\r\n Establece el estado de ocupaci\u00F3n de la d\u00E1rsena.\r\n @param free booleano que indica el estado de disponibilidad.\r\n
+comment7.target=float getAmountCollected()
+comment7.text=\r\n Devuelve la cantidad total recaudada por esta d\u00E1rsena.\r\n @return Cantidad recaudada en \u20AC.\r\n
+comment8.target=java.lang.String toString()
+comment8.text=\r\n Devuelve una representaci\u00F3n en cadena de la d\u00E1rsena, incluyendo su ID, velocidad, tarifa y el n\u00FAmero de EVs recargados.\r\n @return Una representaci\u00F3n en cadena de la d\u00E1rsena.\r\n
+comment9.target=int getNumerEVRecharged()
+comment9.text=\r\n @return El n\u00FAmero total de {@link ElectricBike}s que han sido recargadas por esta d\u00E1rsena.\r\n
+numComments=14

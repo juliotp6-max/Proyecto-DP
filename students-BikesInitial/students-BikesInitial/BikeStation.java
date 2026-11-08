@@ -3,9 +3,10 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+
 /**
- * Models an Electric Vehicle Charging Station.
- * A charging station contains multiple {@link Dock} units.
+ * Modela una estación de recarga de vehículos eléctricos.
+ * Una estación de carga contiene múltiples unidades de dársenas ({@link Dock}).
  * @author DP classes 
  * @version 2026.10.13
  */
@@ -16,7 +17,7 @@ public class BikeStation
     private List<Dock> docks;
 
     /**
-     * Constructor for objects of class BikeStation (default).
+     * Constructor para objetos de la clase BikeStation (por defecto).
      */
     public BikeStation()
     {
@@ -26,9 +27,9 @@ public class BikeStation
     }
 
     /**
-     * Constructor for objects of class BikeStation.
-     * @param id The unique identifier of the station.
-     * @param location The location of the station.
+     * Constructor para objetos de la clase BikeStation.
+     * @param id El identificador único de la estación.
+     * @param location La ubicación de la estación.
      */
     public BikeStation(String id, Location location)
     {
@@ -38,12 +39,8 @@ public class BikeStation
     }
     
     /**
-     * Retrieves the first free {@link Dock} found at the station.
-     * @return A free {@link Dock}, or null if none are found.
-     */
-    
-    /**Metodo con Iterator con Iterator que devuelve
-     *  un dock que este vacio o nulo si estan todos llenos.
+     * Método con Iterator que devuelve un dock que esté vacío o nulo si están todos llenos.
+     * @return Un {@link Dock} libre, o null si no se encuentra ninguno.
      */
     public Dock getFreeDock()
     {
@@ -58,7 +55,7 @@ public class BikeStation
     }
 
     /**
-     * @return The unique identifier of the charging station.
+     * @return El identificador único de la estación de carga.
      */
     public String getId()
     {
@@ -124,9 +121,9 @@ public class BikeStation
     }
     
     /**
-     * Set the current location of the charging station.
-     * @param location Where it is. Must not be null.
-     * @throws NullPointerException If location is null.
+     * Establece la ubicación actual de la estación de carga.
+     * @param location Dónde se encuentra. No debe ser nula.
+     * @throws NullPointerException Si location es nula.
      */
     public void setLocation(Location location)
     {
@@ -137,8 +134,8 @@ public class BikeStation
     }
 
     /**
-     * Returns a string representation of the bike station.
-     * @return A string containing station details.
+     * Devuelve una representación en cadena de la estación de bicicletas.
+     * @return Una cadena que contiene los detalles de la estación.
      */
     @Override
     public String toString() {

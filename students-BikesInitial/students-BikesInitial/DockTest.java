@@ -45,4 +45,5 @@ public class DockTest
         assertEquals(20.0f, dock.getAmountCollected(), 0.001f);
         assertEquals(1, dock.getNumerEVRecharged());
     }
+
 }
