@@ -73,9 +73,11 @@ public class EBikeDemo
      */
     public void step(int step)
     {
-        // Para cada bicicleta, ejecutamos su acción en este paso
+
+        company.step();
+
         for (ElectricBike bike : bikes) {
-            bike.act();
+            System.out.println(bike);
         }
     }
 
@@ -158,18 +160,21 @@ public class EBikeDemo
      * Displays the initial information for the simulation.
      */
     public void showInitialInfo() {
+        System.out.println("( Compañía EBBike Cáceres )");
         System.out.println("(-------------------)");
         System.out.println("( Electric Bikes    )");
         System.out.println("(-------------------)");
 
         for(ElectricBike bike : bikes){
-            System.out.println(bike);
+            System.out.println(bike.toStringSimple());
         }
         
         System.out.println("(-------------------)");
         System.out.println("( Bike Stations     )");
         System.out.println("(-------------------)");
        
+        // Ordenar estaciones por ID al inicio
+        Collections.sort(stations, Comparator.comparing(BikeStation::getId));
         for(BikeStation station : stations){
             System.out.println(station);
         }
@@ -191,20 +196,42 @@ public class EBikeDemo
         System.out.println("( Electric Bikes    )");
         System.out.println("(-------------------)");
         
-        // Ordenamos las bicis usando el comparador por ID disponible
-        Collections.sort(bikes, new ComparatorEBIdBike());
+        // Ordenamos las bicis por turno de llegada (creciente) y en caso de empate por ID (creciente)
+        Collections.sort(bikes, Comparator.comparing(ElectricBike::getTurn)
+                                          .thenComparing(ElectricBike::getIdBike));
         for (ElectricBike bike : bikes) {
-            System.out.println(bike);
+            System.out.println(bike.toStringSimple());
+            for (Dock d : bike.getDocks()) {
+                System.out.println("(Dock: " + d.getId() + ")");
+            }
         }
         
         System.out.println("(-------------------)");
         System.out.println("( Bike Stations     )");
         System.out.println("(-------------------)");
         
-        // Ordenamos las estaciones usando el comparador por ID disponible
-        Collections.sort(stations, new ComparatorBikeStationId());
+        // Ordenamos las estaciones por número de bicis cargadas (decreciente) y en caso de empate por ID (creciente)
+        Collections.sort(stations, Comparator.comparing((BikeStation s) -> {
+            int total = 0;
+            for (Dock d : s.getDocks()) {
+                total += d.getNumerEVRecharged();
+            }
+            return total;
+        }).reversed().thenComparing(BikeStation::getId));
+
         for (BikeStation station : stations) {
-            System.out.println(station);
+            int total = 0;
+            for (Dock d : station.getDocks()) {
+                total += d.getNumerEVRecharged();
+            }
+            System.out.println("(BikeStation: " + station.getId() + ", " + total + ", " + station.getLocation() + ")");
+            
+            for (Dock dock : station.getDocks()) {
+                System.out.println(dock);
+                for (ElectricBike b : dock.getBikesRecharged()) {
+                    System.out.println(b.toStringSimple());
+                }
+            }
         }
     }
     

@@ -216,7 +216,6 @@ public class ElectricBike
      */
     public void recharge()
     {
-        // Buscamos la estación asociada a la ubicación de recarga actual
         BikeStation station = company.getBikeStationAt(rechargingLocation);
         if (station != null) {
             Dock freeDock = station.getFreeDock();
@@ -228,6 +227,11 @@ public class ElectricBike
                     incrementChargesCost(cost);
                     totalWhCharged += whNeeded;
                     batteryLevel = batteryCapacity;
+
+                    int currentTurn = company.getCurrentTurn();
+                    System.out.println("(step: " + currentTurn + " - ElectricBike: " + id + 
+                                       " recharges: " + whNeeded + "wh at dock: " + freeDock.getId() + 
+                                       " with cost: " + cost + "€ ********)");
                 }
                 if (!docks.contains(freeDock)) {
                     docks.add(freeDock);
@@ -236,7 +240,7 @@ public class ElectricBike
         }
         rechargingLocation = null;
         calculateRoute();
-    }  
+    }
 
     /**
      * Incrementa el contador de recargas realizadas por esta bicicleta.
@@ -267,20 +271,19 @@ public class ElectricBike
 
         if (location.equals(destination)) {
             if (location.equals(targetLocation)) {
-                
                 if(turn == Integer.MAX_VALUE){
                     turn = company.getCurrentTurn();
+                    // IMPRESIÓN CUANDO LLEGA AL DESTINO FINAL
+                    System.out.println("(step: " + turn + " - ElectricBike: " + id + " at target destination ********)");
                 }
                 idleCount++;
             } else if (location.equals(rechargingLocation)) {
                 recharge();
             }
         } else {
-            // Actualizamos la posición con setLocation usando nextLocation
             setLocation(location.nextLocation(destination));
             reduceBatteryLevel();
 
-            // Si al movernos hemos alcanzado la estación de recarga
             if (location.equals(rechargingLocation)) {
                 recharge();
             }
@@ -299,13 +302,34 @@ public class ElectricBike
     }
 
     /**
+     * Devuelve una representación en cadena de la bicicleta eléctrica sin el prefijo del paso de la simulación.
+     * Se utiliza para mostrar la información inicial y final siguiendo el formato del Anexo I.
+     * @return Una cadena que contiene el identificador, capacidad y nivel de batería, recargas,
+     *         costes, inactividad, ubicación actual, ubicación de recarga (si existe) y destino final.
+     */
+    public String toStringSimple() {
+        return "(ElectricBike: " + id + ", " + 
+               batteryCapacity + "wh, " + 
+               batteryLevel + "wh, " + 
+               numberOfCharges + ", " + 
+               chargesCost + "€, " + 
+               idleCount + ", " + 
+               location + ", " + 
+               (rechargingLocation != null ? rechargingLocation + ", " : "") + 
+               targetLocation + ")";
+    }
+
+    /**
      * Devuelve una representación detallada en cadena de la bicicleta eléctrica.
      * @return Una cadena que contiene el nombre/id de la bicicleta, información de batería, conteo de cargas, costes, inactividad y ruta.
      */
     @Override
     public String toString() {
-        String cad = "(ElectricBike: " + getIdBike() + ", " + batteryLevel + "wh, ";
-        cad = cad + batteryCapacity + "wh, " + numberOfCharges + ", " + chargesCost + ", " + idleCount + ")";
-        return cad;
+        int currentTurn = (company != null) ? company.getCurrentTurn() : 0;
+        return "(step: " + currentTurn + " - " + toStringSimple().substring(1);
+    }
+
+    public List<Dock> getDocks() {
+        return docks;
     }
 }

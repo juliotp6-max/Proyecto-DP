@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Pruebas unitarias para la clase BikeStation.
  */
-public class BikeStationTest
+public class BikeStationTest 
 {
     private BikeStation station;
 

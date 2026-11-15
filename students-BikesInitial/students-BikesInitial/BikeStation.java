@@ -139,6 +139,16 @@ public class BikeStation
      */
     @Override
     public String toString() {
-        return "BikeStation [id=" + idStation + ", location=" + location + ", docks=" + docks.size() + "]";
+        int totalBikes = 0;
+        for (Dock d : docks) {
+            totalBikes += d.getNumerEVRecharged();
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("(BikeStation: ").append(idStation).append(", ").append(totalBikes).append(", ").append(location).append(")");
+        
+        for (Dock dock : docks) {
+            sb.append("\n").append(dock);
+        }
+        return sb.toString();
     }
 }

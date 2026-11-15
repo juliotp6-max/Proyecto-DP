@@ -95,15 +95,18 @@ public class Dock
         return amountCollected;
     }
 
+    public List<ElectricBike> getBikesRecharged() {
+        return bikesRecharged;
+    }
+
     /**
      * Devuelve una representación en cadena de la dársena, incluyendo su ID, velocidad, tarifa y el número de EVs recargados.
      * @return Una representación en cadena de la dársena.
      */
-    public String toString()
-    {
-        return "Dock [id=" + idDock + ", speed=" + chargingSpeed + ", fee=" + chargingFee +  
-               ", rechargedBikes=" + getNumerEVRecharged() + ", collected=" + amountCollected + "€]";
-    }   
+    @Override
+    public String toString() {
+        return "(Dock: " + idDock + ", " + chargingSpeed + "wh, " + chargingFee + "€, " + getNumerEVRecharged() + ", " + amountCollected + "€)";
+    }
 
     /**
      * @return El número total de {@link ElectricBike}s que han sido recargadas por esta dársena.
