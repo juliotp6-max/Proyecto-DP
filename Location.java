@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 /**
  * Modela una ubicación en una ciudad con cuadrícula bidimensional utilizando coordenadas (x, y).
  * @author David J. Barnes y Michael Kölling
